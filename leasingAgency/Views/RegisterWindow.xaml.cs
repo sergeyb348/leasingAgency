@@ -15,26 +15,18 @@ using System.Windows.Shapes;
 namespace leasingAgency.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LoginWindow.xaml
+    /// Логика взаимодействия для RegisterWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class RegisterWindow : Window
     {
-        public LoginWindow()
+        public RegisterWindow()
         {
             InitializeComponent();
         }
 
-        private void MainWindow_Click(object sender, RoutedEventArgs e)
+        private void LoginWindow_Click(object sender, RoutedEventArgs e)
         {
-            
-            MainWindowUser taskMainWindowUser = new MainWindowUser();
-            taskMainWindowUser.Show();
-            this.Close();
-        }
-
-        private void RegisterWindow_Click(object sender, RoutedEventArgs e)
-        {
-            RegisterWindow taskMainWindowUser = new RegisterWindow();
+            LoginWindow taskMainWindowUser = new LoginWindow();
             taskMainWindowUser.Show();
             this.Close();
         }

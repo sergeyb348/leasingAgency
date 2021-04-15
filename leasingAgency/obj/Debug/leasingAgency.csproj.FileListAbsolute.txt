@@ -16,7 +16,6 @@ F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\MainWindowUser.g.cs
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\MainWindowUser.baml
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\ItemsAuto.g.cs
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\ItemsAuto.baml
-F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\leasingAgency.csprojAssemblyReference.cache
 F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\ControlzEx.dll
 F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\MahApps.Metro.dll
 F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\MaterialDesignColors.dll
@@ -34,3 +33,6 @@ F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\MaterialDesignThemes.Wpf.xml
 F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\Microsoft.Xaml.Behaviors.pdb
 F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\Microsoft.Xaml.Behaviors.xml
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\leasingAgency.csproj.CopyComplete
+F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\leasingAgency.csprojAssemblyReference.cache
+F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\RegisterWindow.g.cs
+F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\RegisterWindow.baml

@@ -12,6 +12,8 @@ namespace leasingAgency.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+       // public static List<>
+
         public string nameAuto
         {
             get { return nameAuto; }

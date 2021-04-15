@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:leasingAgency.Views"
         mc:Ignorable="d"
+        Icon="resources/icon.png"
         Title="MainWindowUser" Height="450" Width="800">
     <Window.Resources>
-        <Style  TargetType="Button" x:Key="StyleButtonMenu">
-            <Setter Property="FontFamily" Value="Verdana" />
-            <Setter Property="Background" Value="Black" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="Height" Value="60"/>
-            <Setter Property="Padding" Value="20"/>
+            <Style  TargetType="Button" x:Key="StyleButtonMenu">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontFamily" Value="Verdana" />
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Height" Value="60"/>
+                <Setter Property="Padding" Value="20"/>
             <Setter Property="BorderBrush" Value="Black"/>
         </Style>
         <Style  TargetType="TextBlock" x:Key="StyleItemsСollection">
@@ -20,6 +22,13 @@
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="Height" Value="60"/>
             <Setter Property="Padding" Value="20"/>
+        </Style >
+        <Style TargetType="TextBlock" x:Key="StyleInfo">
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="Padding" Value="30"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="FontSize" Value="25"/>
         </Style>
     </Window.Resources>
     <Grid Margin="0,0,0,-1">
@@ -75,6 +84,6 @@
             <Button Style="{StaticResource StyleButtonMenu}" Content="О нас" />
         </StackPanel>
 
-        <TextBlock Text="Информация о странице" Grid.Column="1" Grid.Row="0" TextAlignment="Center" Height="Auto" Padding="30" FontFamily="Verdana" FontSize="25"/>
+        <TextBlock Style="{StaticResource StyleInfo}" Text="Информация о странице" Grid.Column="1" Grid.Row="0" />
     </Grid>
 </Window>
