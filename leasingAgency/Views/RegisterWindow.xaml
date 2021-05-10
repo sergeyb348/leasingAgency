@@ -3,16 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:vm="clr-namespace:leasingAgency.ViewsModels"
         xmlns:local="clr-namespace:leasingAgency.Views"
         mc:Ignorable="d"
         Icon="resources/icon.png"
-        Title="RegisterWindow" Height="500" Width="400">
+        Title="{Binding Title}" Height="500" Width="400">
+    <Window.DataContext>
+        <vm:RegisterWindowVM/>
+    </Window.DataContext>
     <Window.Resources>
         <Style  TargetType="Button" x:Key="StyleButtonMenu">
             <Setter Property="FontFamily" Value="Verdana" />
-            <Setter Property="Background" Value="Black" />
+            <Setter Property="Background" Value="#200b13" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#200b13"/>
             <Setter Property="FontSize" Value="15"/>
         </Style>
 
@@ -32,8 +37,8 @@
         </Style>
         
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
-        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="Black"/>
-        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="Black"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#200b13"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#200b13"/>
         <Style TargetType="{x:Type PasswordBox}">
             <Setter Property="FontFamily" Value="Verdana"/>
             <Setter Property="FontSize" Value="15"/>
@@ -52,7 +57,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type PasswordBox}">
-                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Border x:Name="border" CornerRadius="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -60,10 +65,10 @@
                                 <Setter Property="Opacity" TargetName="border" Value="0.56"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="black"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#200b13"/>
                             </Trigger>
                             <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="black"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#200b13"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -79,9 +84,9 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
-        
-        <SolidColorBrush x:Key="TextBox.MouseOver.Border2" Color="Black"/>
-        <SolidColorBrush x:Key="TextBox.Focus.Border2" Color="Black"/>
+
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border2" Color="#200b13"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border2" Color="#200b13"/>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontFamily" Value="Verdana"/>
             <Setter Property="FontSize" Value="15"/>
@@ -100,7 +105,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Border x:Name="border" CornerRadius="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -127,12 +132,16 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
-        
+        <Style x:Key="TextBlockError" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextTrimming" Value="None"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="red"/>
+        </Style>
         
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -147,9 +156,17 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Логин" Grid.Row="0" />
-            <TextBox Grid.Row="1">
-            </TextBox>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Логин" Grid.Row="0" />
+                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorLogin}" Grid.Row="1" />
+            </Grid>
+
+            <TextBox Text="{Binding Path=TextBoxLogin, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
+
         </Grid>
 
         <Grid Grid.Row="2">
@@ -157,9 +174,17 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource StyleInfoMenu}" Text="e-mail" Grid.Row="0" />
-            <TextBox Grid.Row="1">
-            </TextBox>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Пароль" Grid.Column="1" Grid.Row="0" />
+                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorPasswordFirst}" Grid.Row="1" />
+            </Grid>
+
+            <PasswordBox Grid.Row="1" Name="pwdBoxFirst"/>
+            
         </Grid>
 
         <Grid Grid.Row="3">
@@ -167,23 +192,21 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Пороль" Grid.Column="1" Grid.Row="0" />
-            <PasswordBox Grid.Row="1" />
-        </Grid>
-
-        <Grid Grid.Row="4">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Повтор пороля" Grid.Column="1" Grid.Row="0" />
-            <PasswordBox Grid.Row="1" />
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Повтор пароля" Grid.Column="1" Grid.Row="0" />
+                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorPasswordSecond}" Grid.Row="1" />
+            </Grid>
+            <PasswordBox Grid.Row="1" Name="pwdBoxSecond"/>
         </Grid>
 
         <TextBlock Style="{StaticResource StyleInfo}" Text="Регистрация" Grid.Column="1" Grid.Row="0" />
 
-        <Button Style="{StaticResource StyleButtonMenu}" Grid.Row="6" IsDefault ="True" Content="Зарегистрироваться"/>
-        <Button Style="{StaticResource StyleButtonMenu}" Grid.Row="7" IsDefault ="True" Content="Вернуться к входу" Click="LoginWindow_Click"/>
+        <Button Command="{Binding RegisterUser}" Style="{StaticResource StyleButtonMenu}" Grid.Row="5" IsDefault ="True" Content="Зарегистрироваться"/>
+        <Button Command="{Binding OpenLoginWindow}" Style="{StaticResource StyleButtonMenu}" Grid.Row="6" IsDefault ="True" Content="Вернуться к входу"/>
     </Grid>
 
 </Window>

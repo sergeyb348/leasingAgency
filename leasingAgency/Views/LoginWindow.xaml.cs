@@ -11,32 +11,30 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using leasingAgency.Models;
+using leasingAgency.ViewsModels;
 
 namespace leasingAgency.Views
 {
     /// <summary>
     /// Логика взаимодействия для LoginWindow.xaml
-    /// </summary>
+    /// </summary> 
+    
     public partial class LoginWindow : Window
     {
+        LoginWindowVM loginWindowVM;
+
         public LoginWindow()
         {
+            WindowsManager.loginWindow = this;
             InitializeComponent();
+            loginWindowVM = new LoginWindowVM();
+            DataContext = loginWindowVM;
         }
 
-        private void MainWindow_Click(object sender, RoutedEventArgs e)
+        public void SetPassword()
         {
-            
-            MainWindowUser taskMainWindowUser = new MainWindowUser();
-            taskMainWindowUser.Show();
-            this.Close();
-        }
-
-        private void RegisterWindow_Click(object sender, RoutedEventArgs e)
-        {
-            RegisterWindow taskMainWindowUser = new RegisterWindow();
-            taskMainWindowUser.Show();
-            this.Close();
+            loginWindowVM.TextBoxPassword = PasswordManager.GetPassword(PwdBox.Password);
         }
     }
 }

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using leasingAgency.ViewsModels;
+using leasingAgency.ViewsModels.Base;
 
 namespace leasingAgency.Views
 {
@@ -19,16 +21,19 @@ namespace leasingAgency.Views
     /// </summary>
     public partial class RegisterWindow : Window
     {
+        RegisterWindowVM registerWindowVM;
+
         public RegisterWindow()
         {
             InitializeComponent();
+            registerWindowVM = new RegisterWindowVM();
+            DataContext = registerWindowVM;
         }
 
-        private void LoginWindow_Click(object sender, RoutedEventArgs e)
+        public void GetPassword()
         {
-            LoginWindow taskMainWindowUser = new LoginWindow();
-            taskMainWindowUser.Show();
-            this.Close();
+            registerWindowVM.TextBoxPasswordFirst = pwdBoxFirst.Password;
+            registerWindowVM.TextBoxPasswordSecond = pwdBoxSecond.Password;
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿<Page x:Class="leasingAgency.Views.MainWindow.PagesUserWindow.PageInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:leasingAgency.Views.MainWindow.PagesUserWindow"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageInfo"
+      Background="Aqua">
+
+    <Grid>
+        
+    </Grid>
+</Page>
