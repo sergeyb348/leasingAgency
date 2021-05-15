@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\UCZ\OOP\leasingAgency\leasingAgency\App.xaml
-51761220023
-2-238411478
-26-1009094836
+7454804201
+21999933160
+34-1525341822
 1361796158966
-Views\MainWindow\PagesUserWindow\ItemsAuto.xaml;Views\LoginWindow.xaml;Views\MainWindow\PagesUserWindow\PageInfo.xaml;Views\MainWindow\WindowUser.xaml;Views\RegisterWindow.xaml;
+Views\MainWindow\PagesUserWindow\ItemsAuto.xaml;Views\LoginWindow.xaml;Views\MainWindow\PagesUserWindow\PageAddAuto.xaml;Views\MainWindow\PagesUserWindow\PageInfo.xaml;Views\MainWindow\WindowAdmin.xaml;Views\MainWindow\WindowUser.xaml;Views\RegisterWindow.xaml;
 
 False
 

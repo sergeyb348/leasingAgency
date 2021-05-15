@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:leasingAgency.Views"
         xmlns:vm="clr-namespace:leasingAgency.ViewsModels"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="950">
+        Title="{Binding Title}" Height="600" Width="950" ResizeMode="CanMinimize">
     <Window.DataContext>
         <vm:WindowUserVM/>
     </Window.DataContext>
@@ -37,8 +37,6 @@
     </Window.Resources>
     <Grid Margin="0,0,0,-1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="100*" />
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -51,27 +49,29 @@
             Content="{Binding CurrentPage}"
             Opacity="{Binding }"
         />
-        <Frame Grid.Row="1" Grid.Column="1" Name="FrameWindowUser" NavigationUIVisibility="Hidden" />
-        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Background="#200b13">
+        <Frame Grid.Row="0" Grid.Column="1" Name="FrameWindowUser" NavigationUIVisibility="Hidden" />
+        
+        <Grid Grid.Row="0" Grid.Column="0" Background="#200b13">
             <Grid.RowDefinitions>
-                <RowDefinition Height="350"/>
+                <RowDefinition Height="500"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0"  Background="#200b13">
-            <Button Style="{StaticResource StyleButtonMenu}" Content="Мой профиль"  />
-            <Button Style="{StaticResource StyleButtonMenu}" Content="Главное" Click="OpenMainPage_Click"/>
-            <Button Style="{StaticResource StyleButtonMenu}" Content="Информация" Click="OpenInfoPage_Click" />
+            <StackPanel Grid.Row="0"  Background="#200b13">
+                <Button Style="{StaticResource StyleButtonMenu}" Content="Мой профиль"  />
+                <Button Style="{StaticResource StyleButtonMenu}" Content="Главное" Command="{Binding OpenPageMain}"/>
+                <Button Style="{StaticResource StyleButtonMenu}" Content="Оставить заявку" Command="{Binding OpenPageInfo}"/>
             
-        </StackPanel>
+            </StackPanel>
             <TextBlock Grid.Row="1"
-                       Height="auto"
-                       Padding="30"
+                       Text="{Binding UserLogin}"
+                       Height="35"
+                       Width="190"
+                       Padding="10"
                        TextAlignment="Center"
                        Foreground="White"
                        FontFamily="Verdana"
                        FontSize="15"
-                       Text="{Binding UserLogin}"/>
+                       />
         </Grid>
-        <TextBlock Style="{StaticResource StyleInfo}" Text="Информация о странице" Grid.Column="1" Grid.Row="0" />
     </Grid>
 </Window>

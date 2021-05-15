@@ -110,32 +110,42 @@
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
     <Compile Include="Models\Auto.cs" />
-    <Compile Include="Models\DBleasingAgency.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBleasingAgency.Context.tt</DependentUpon>
+    <Compile Include="Models\AutoTable.cs">
+      <DependentUpon>LeasingAgencyBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBleasingAgency.cs">
+    <Compile Include="Models\ItemsAutoManager.cs" />
+    <Compile Include="Models\LeasingAgencyBD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBleasingAgency.tt</DependentUpon>
+      <DependentUpon>LeasingAgencyBD.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBleasingAgency.Designer.cs">
+    <Compile Include="Models\LeasingAgencyBD.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBleasingAgency.edmx</DependentUpon>
+      <DependentUpon>LeasingAgencyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LeasingAgencyBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LeasingAgencyBD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LeasingApplications.cs">
+      <DependentUpon>LeasingAgencyBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MainUser.cs" />
     <Compile Include="Models\PasswordManager.cs" />
     <Compile Include="Models\Register.cs" />
-    <Compile Include="Models\User.cs">
-      <DependentUpon>DBleasingAgency.tt</DependentUpon>
+    <Compile Include="Models\UserTable.cs">
+      <DependentUpon>LeasingAgencyBD.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewsModels\Base\ViewModel.cs" />
     <Compile Include="ViewsModels\DelegateCommand.cs" />
+    <Compile Include="ViewsModels\ItemsAutoVM.cs" />
+    <Compile Include="ViewsModels\PageAddAutoVM.cs" />
     <Compile Include="ViewsModels\Windows\LoginWindowVM.cs" />
     <Compile Include="ViewsModels\RegexForm.cs" />
     <Compile Include="ViewsModels\Windows\RegisterWindowVM.cs" />
+    <Compile Include="ViewsModels\Windows\WindowAdminVM.cs" />
     <Compile Include="ViewsModels\Windows\WindowsManager.cs" />
     <Compile Include="ViewsModels\Windows\WindowUserVM.cs" />
     <Compile Include="Views\MainWindow\PagesUserWindow\ItemsAuto.xaml.cs">
@@ -144,8 +154,14 @@
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MainWindow\PagesUserWindow\PageAddAuto.xaml.cs">
+      <DependentUpon>PageAddAuto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow\PagesUserWindow\PageInfo.xaml.cs">
       <DependentUpon>PageInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow\WindowAdmin.xaml.cs">
+      <DependentUpon>WindowAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow\WindowUser.xaml.cs">
       <DependentUpon>WindowUser.xaml</DependentUpon>
@@ -161,7 +177,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MainWindow\PagesUserWindow\PageAddAuto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow\PagesUserWindow\PageInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow\WindowAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,12 +216,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\DBleasingAgency.edmx">
+    <EntityDeploy Include="Models\LeasingAgencyBD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBleasingAgency.Designer.cs</LastGenOutput>
+      <LastGenOutput>LeasingAgencyBD.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\DBleasingAgency.edmx.diagram">
-      <DependentUpon>DBleasingAgency.edmx</DependentUpon>
+    <None Include="Models\LeasingAgencyBD.edmx.diagram">
+      <DependentUpon>LeasingAgencyBD.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -223,19 +247,21 @@
     <Resource Include="Views\resources\9.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\DBleasingAgency.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBleasingAgency.Context.cs</LastGenOutput>
-      <DependentUpon>DBleasingAgency.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\DBleasingAgency.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBleasingAgency.edmx</DependentUpon>
-      <LastGenOutput>DBleasingAgency.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Models\LeasingAgencyBD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LeasingAgencyBD.edmx</DependentUpon>
+      <LastGenOutput>LeasingAgencyBD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\LeasingAgencyBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LeasingAgencyBD.edmx</DependentUpon>
+      <LastGenOutput>LeasingAgencyBD.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Views\resources\Liked.png" />
+    <Resource Include="Views\resources\OnLiked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

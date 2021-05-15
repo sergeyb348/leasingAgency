@@ -3,54 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
-
+using System.Windows.Media.Imaging;
 
 namespace leasingAgency.Models
 {
-    class Auto : INotifyPropertyChanged
+    internal class Auto
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-       // public static List<>
-
-        public string nameAuto
-        {
-            get { return nameAuto; }
-
-            set
-            {
-                nameAuto = value;
-                OnPropertyChanged("nameAuto");
-            }
-        }
-
-        public string priceAuto
-        {
-            get { return priceAuto; }
-
-            set
-            {
-                nameAuto = value;
-                OnPropertyChanged("priceAuto");
-            }
-        }
-
-        public string infoAuto
-        {
-            get { return infoAuto; }
-
-            set
-            {
-                infoAuto = value;
-                OnPropertyChanged("infoAuto");
-            }
-        }
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public int IdAuto { get; set; }
+        public string BrandAuto { get; set; }
+        public string ModelAuto { get; set; }
+        public string BodyType { get; set; }
+        public int Release { get; set; }
+        public string Color { get; set; }
+        public int Price { get; set; }
+        public int DurationPayment { get; set; }
+        public int MonthPayment { get; set; }
+        public BitmapImage ImgAuto { get; set; }
     }
 }

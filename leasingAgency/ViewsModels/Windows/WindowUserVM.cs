@@ -61,6 +61,22 @@ namespace leasingAgency.ViewsModels
         }
         #endregion
 
+        #region ImgAuto
+
+        private string _ImgAuto;
+
+        /// <summary> ImgAuto </summary>
+
+        public string ImgAuto
+        {
+            get => _ImgAuto;
+
+            set => Set(ref _ImgAuto, value);
+
+
+        }
+        #endregion
+
         #region Команды
 
         #region OpenPageMain
@@ -70,7 +86,7 @@ namespace leasingAgency.ViewsModels
 
         private void OnOpenPageMain(object p)
         {
-            
+            WindowsManager.windowUser.FrameWindowUser.Navigate(new ItemsAuto());
         }
         #endregion
 
@@ -81,7 +97,7 @@ namespace leasingAgency.ViewsModels
 
         private void OnOpenPageInfo(object p)
         {
-            
+            WindowsManager.windowUser.FrameWindowUser.Navigate(new PageInfo());
         }
         #endregion
 
@@ -90,6 +106,7 @@ namespace leasingAgency.ViewsModels
 
         public WindowUserVM() 
         {
+
             UserLogin = MainUser.getInstance().GetloginUser();
 
             #region Команды

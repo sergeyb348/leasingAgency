@@ -1,4 +1,5 @@
 ﻿using leasingAgency.Views.MainWindow.PagesUserWindow;
+using leasingAgency.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace leasingAgency.Views
         public ItemsAuto()
         {
             InitializeComponent();
+            DataContext = new ItemsAutoVM();
         }
     }
 }

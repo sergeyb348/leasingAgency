@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using leasingAgency.Models;
 
 namespace leasingAgency.Models
 {
@@ -40,11 +41,11 @@ namespace leasingAgency.Models
         {
             try
             {
-                leasingAgency_BDContext context = new leasingAgency_BDContext();
-                User user = context.User_Table.First(x => x.User_Login == login && x.User_Password == password);
+                leasingAgencyBD context = new leasingAgencyBD();
+                UserTable user = context.UserTable.First(x => x.UserLogin.Trim() == login && x.UserPassword == password);
                 MainUser mainUser = getInstance();
-                mainUser.idUser = user.ID_User;
-                mainUser.loginUser = user.User_Login;
+                mainUser.idUser = user.IdUser;
+                mainUser.loginUser = user.UserLogin;
                 return true;
             }
             catch

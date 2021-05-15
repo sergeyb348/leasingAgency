@@ -34,7 +34,7 @@ namespace leasingAgency.Views
 
         public void SetPassword()
         {
-            loginWindowVM.TextBoxPassword = PasswordManager.GetPassword(PwdBox.Password);
+            loginWindowVM.TextBoxPassword = PasswordManager.GetHash(PwdBox.Password);
         }
     }
 }

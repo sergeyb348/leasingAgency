@@ -24,18 +24,7 @@ namespace leasingAgency.Views.MainWindow
         public WindowUser()
         {
             InitializeComponent();
-            FrameWindowUser.Navigate(new ItemsAuto());
             DataContext = new WindowUserVM();
-        }
-
-        private void OpenMainPage_Click(object sender, RoutedEventArgs e)
-        {
-            FrameWindowUser.Navigate(new ItemsAuto());
-        }
-
-        private void OpenInfoPage_Click(object sender, RoutedEventArgs e)
-        {
-            FrameWindowUser.Navigate(new PageInfo());
         }
     }
 }

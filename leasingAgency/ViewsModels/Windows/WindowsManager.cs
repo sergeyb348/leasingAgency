@@ -12,7 +12,25 @@ namespace leasingAgency.ViewsModels
 {
     internal static class WindowsManager
     {
-        # region mainWindowUser
+
+        #region windowAdmin
+
+        internal static WindowAdmin windowAdmin;
+
+        internal static void OpenWindowAdmin()
+        {
+            windowAdmin = new WindowAdmin();
+            windowAdmin.Show();
+        }
+
+        internal static void ClosenWindowAdmin()
+        {
+            windowAdmin.Close();
+        }
+
+        #endregion
+
+        # region windowUser
 
         internal static WindowUser windowUser;
 
@@ -22,7 +40,7 @@ namespace leasingAgency.ViewsModels
             windowUser.Show();
         }
 
-        internal static void CloseMainWindowUser() 
+        internal static void CloseWindowUser() 
         {
             windowUser.Close();
         }

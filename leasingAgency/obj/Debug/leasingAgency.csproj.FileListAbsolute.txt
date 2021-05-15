@@ -32,7 +32,6 @@ F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\MaterialDesignThemes.Wpf.pdb
 F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\MaterialDesignThemes.Wpf.xml
 F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\Microsoft.Xaml.Behaviors.pdb
 F:\UCZ\OOP\leasingAgency\leasingAgency\bin\Debug\Microsoft.Xaml.Behaviors.xml
-F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\leasingAgency.csprojAssemblyReference.cache
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\MainWindow\PagesUserWindow\ItemsAuto.g.cs
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\LoginWindow.g.cs
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\MainWindow\PagesUserWindow\PageInfo.g.cs
@@ -56,3 +55,7 @@ F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\leasingAgency.csproj.CoreCompil
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\leasingAgency.csproj.CopyComplete
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\leasingAgency.exe
 F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\leasingAgency.pdb
+F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\MainWindow\WindowAdmin.g.cs
+F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\MainWindow\WindowAdmin.baml
+F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\MainWindow\PagesUserWindow\PageAddAuto.g.cs
+F:\UCZ\OOP\leasingAgency\leasingAgency\obj\Debug\Views\MainWindow\PagesUserWindow\PageAddAuto.baml

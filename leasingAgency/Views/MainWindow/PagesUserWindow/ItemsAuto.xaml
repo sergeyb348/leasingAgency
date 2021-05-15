@@ -5,53 +5,135 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:leasingAgency.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="572" d:DesignWidth="754"
       Title="ItemsAuto">
     <Page.Resources>
         <Style  TargetType="Button" >
             <Setter Property="FontFamily" Value="Verdana" />
-            <Setter Property="Background" Value="Black" />
+            <Setter Property="Background" Value="#200b13" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Height" Value="60"/>
             <Setter Property="Padding" Value="20"/>
-            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#200b13"/>
         </Style>
+        
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        
         <Style  TargetType="TextBlock" x:Key="StyleItemsСollection">
             <Setter Property="FontFamily" Value="Verdana" />
-            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Foreground" Value="#200b13" />
             <Setter Property="Height" Value="60"/>
             <Setter Property="Padding" Value="20"/>
         </Style>
-    </Page.Resources>
-    <ListBox Name="ListBoxCar" Grid.Column="1" Grid.Row="1" Background="#808080">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <Border BorderBrush="Black" Margin="5" BorderThickness="2" CornerRadius="3" Background="#DCDCDC">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="400"/>
-                            <ColumnDefinition Width="300"/>
-                        </Grid.ColumnDefinitions>
-                        <Border BorderBrush="Black" BorderThickness="1" Margin="5">
-                            <Image Width="400" Height="300" RenderOptions.BitmapScalingMode="Fant" Source="F:\Я\Ага\bd6iT5ZS5w4.jpg" Grid.Column="0"/>
+
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border2" Color="#200b13"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border2" Color="#200b13"/>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="#200b13"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Margin" Value="12"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
-                        <Grid Grid.Column="1">
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#200b13"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#200b13"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+            
+            <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#200b13">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="1" 
+                     Text="{Binding Path=TextBoxSearch, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Grid.Column="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="Поиск" FontFamily="Verdana" 
+                       FontSize="30"
+                       Foreground="White"/>
+        </Grid>
+        <ListBox ItemsSource="{Binding itemsAuto}" Grid.Row="1" Background="White">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#200b13" Margin="5" BorderThickness="2" CornerRadius="3" Background="#DCDCDC">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="400"/>
+                                <ColumnDefinition Width="300"/>
+                            </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding NameCar}" Grid.Row="0" />
-                            <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding NameCar}" Grid.Row="1" />
-                            <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding NameCar}" Grid.Row="2" />
-                            <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding NameCar}" Grid.Row="3" />
-                            <Button  Content="Добавить в лист ожидания" Margin="0 0 5 5" Grid.Row="4" />
+                            <Border BorderBrush="#200b13" BorderThickness="1" Margin="5">
+                                <Image Width="400" Height="300" RenderOptions.BitmapScalingMode="Fant" Source="{Binding ImgAuto}" Grid.Column="0"/>
+                            </Border>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding BrandAuto}" Grid.Row="0" />
+                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding ModelAuto}" Grid.Row="1" />
+                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding BodyType}" Grid.Row="2" />
+                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding ReleaseAuto}" Grid.Row="3" />
+                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding Color}" Grid.Row="4" />
+                                <Button  Content="Добавить в лист ожидания" Margin="0 0 5 5" Grid.Row="4" />
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Border>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+    
 </Page>

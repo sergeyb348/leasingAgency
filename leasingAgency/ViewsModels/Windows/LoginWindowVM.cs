@@ -144,11 +144,21 @@ namespace leasingAgency.ViewsModels
         private void OnOpenMainWindowUser(object p)
         {
             WindowsManager.loginWindow.SetPassword();
-            if (MainUser.SetMainUser(TextBoxLogin, TextBoxPassword))
+            if ("admin" == TextBoxLogin && "g7xtBgxAOGWt70+6nGuLGw==" == TextBoxPassword)
             {
-                
+                WindowsManager.OpenWindowAdmin();
+                if (WindowsManager.loginWindow == null)
+                    Application.Current.MainWindow.Close();
+                else
+                    WindowsManager.CloseLoginWindow();
+            }
+            else if (MainUser.SetMainUser(TextBoxLogin, TextBoxPassword))
+            {
                 WindowsManager.OpenMainWindowUser();
-                Application.Current.MainWindow.Close();
+                if (WindowsManager.loginWindow == null)
+                    Application.Current.MainWindow.Close();
+                else
+                    WindowsManager.CloseLoginWindow();
             }
             else 
             {

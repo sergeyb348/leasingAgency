@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище leasingAgency_BDModelContainer" CdmEntityContainer="leasingAgency_BDEntities">
+    <EntitySetMapping Name="AutoTable">
+      <EntityTypeMapping TypeName="leasingAgency_BDModel.AutoTable">
+        <MappingFragment StoreEntitySet="AutoTable">
+          <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
+          <ScalarProperty Name="BrandAuto" ColumnName="BrandAuto" />
+          <ScalarProperty Name="ModelAuto" ColumnName="ModelAuto" />
+          <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+          <ScalarProperty Name="Release" ColumnName="Release" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DurationPayment" ColumnName="DurationPayment" />
+          <ScalarProperty Name="MonthPayment" ColumnName="MonthPayment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Table">
+      <EntityTypeMapping TypeName="leasingAgency_BDModel.User_Table">
+        <MappingFragment StoreEntitySet="User_Table">
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="User_Login" ColumnName="User_Login" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище leasingAgency_BDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AutoTable">
+          <Key>
+            <PropertyRef Name="IdAuto" />
+          </Key>
+          <Property Name="IdAuto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandAuto" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="ModelAuto" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="BodyType" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Release" Type="int" Nullable="false" />
+          <Property Name="Color" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="DurationPayment" Type="int" Nullable="false" />
+          <Property Name="MonthPayment" Type="int" Nullable="false" />
+          <Property Name="ImgAuto" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LeasingApplications">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="Surname" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="MiddleName" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="DataApplications" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikedAuto">
+          <Key>
+            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="IdAuto" />
+          </Key>
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdAuto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserLogin" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="UserPassword" Type="char" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__LeasingAp__IdUse__3F466844">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LeasingApplications" Type="Self.LeasingApplications" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="LeasingApplications">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LikedAuto__IdAut__3C69FB99">
+          <End Role="AutoTable" Type="Self.AutoTable" Multiplicity="1" />
+          <End Role="LikedAuto" Type="Self.LikedAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoTable">
+              <PropertyRef Name="IdAuto" />
+            </Principal>
+            <Dependent Role="LikedAuto">
+              <PropertyRef Name="IdAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LikedAuto__IdUse__3B75D760">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LikedAuto" Type="Self.LikedAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="LikedAuto">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище leasingAgency_BDModelContainer">
+          <EntitySet Name="AutoTable" EntityType="Self.AutoTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeasingApplications" EntityType="Self.LeasingApplications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikedAuto" EntityType="Self.LikedAuto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__LeasingAp__IdUse__3F466844" Association="Self.FK__LeasingAp__IdUse__3F466844">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LeasingApplications" EntitySet="LeasingApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LikedAuto__IdAut__3C69FB99" Association="Self.FK__LikedAuto__IdAut__3C69FB99">
+            <End Role="AutoTable" EntitySet="AutoTable" />
+            <End Role="LikedAuto" EntitySet="LikedAuto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LikedAuto__IdUse__3B75D760" Association="Self.FK__LikedAuto__IdUse__3B75D760">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LikedAuto" EntitySet="LikedAuto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="leasingAgency_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AutoTable">
+          <Key>
+            <PropertyRef Name="IdAuto" />
+          </Key>
+          <Property Name="IdAuto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandAuto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ModelAuto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BodyType" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Release" Type="Int32" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="DurationPayment" Type="Int32" Nullable="false" />
+          <Property Name="MonthPayment" Type="Int32" Nullable="false" />
+          <Property Name="ImgAuto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserTable" Relationship="Self.LikedAuto" FromRole="AutoTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="LeasingApplications">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DataApplications" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__LeasingAp__IdUse__3F466844" FromRole="LeasingApplications" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserLogin" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LeasingApplications" Relationship="Self.FK__LeasingAp__IdUse__3F466844" FromRole="UserTable" ToRole="LeasingApplications" />
+          <NavigationProperty Name="AutoTable" Relationship="Self.LikedAuto" FromRole="UserTable" ToRole="AutoTable" />
+        </EntityType>
+        <Association Name="FK__LeasingAp__IdUse__3F466844">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="LeasingApplications" Type="Self.LeasingApplications" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="LeasingApplications">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LikedAuto">
+          <End Role="AutoTable" Type="Self.AutoTable" Multiplicity="*" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="leasingAgencyBD" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AutoTable" EntityType="Self.AutoTable" />
+          <EntitySet Name="LeasingApplications" EntityType="Self.LeasingApplications" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" />
+          <AssociationSet Name="FK__LeasingAp__IdUse__3F466844" Association="Self.FK__LeasingAp__IdUse__3F466844">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="LeasingApplications" EntitySet="LeasingApplications" />
+          </AssociationSet>
+          <AssociationSet Name="LikedAuto" Association="Self.LikedAuto">
+            <End Role="AutoTable" EntitySet="AutoTable" />
+            <End Role="UserTable" EntitySet="UserTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище leasingAgency_BDModelContainer" CdmEntityContainer="leasingAgencyBD">
+          <EntitySetMapping Name="AutoTable">
+            <EntityTypeMapping TypeName="leasingAgency_BDModel.AutoTable">
+              <MappingFragment StoreEntitySet="AutoTable">
+                <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
+                <ScalarProperty Name="BrandAuto" ColumnName="BrandAuto" />
+                <ScalarProperty Name="ModelAuto" ColumnName="ModelAuto" />
+                <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+                <ScalarProperty Name="Release" ColumnName="Release" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DurationPayment" ColumnName="DurationPayment" />
+                <ScalarProperty Name="MonthPayment" ColumnName="MonthPayment" />
+                <ScalarProperty Name="ImgAuto" ColumnName="ImgAuto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeasingApplications">
+            <EntityTypeMapping TypeName="leasingAgency_BDModel.LeasingApplications">
+              <MappingFragment StoreEntitySet="LeasingApplications">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="DataApplications" ColumnName="DataApplications" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTable">
+            <EntityTypeMapping TypeName="leasingAgency_BDModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="LikedAuto" TypeName="leasingAgency_BDModel.LikedAuto" StoreEntitySet="LikedAuto">
+            <EndProperty Name="AutoTable">
+              <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
+            </EndProperty>
+            <EndProperty Name="UserTable">
+              <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

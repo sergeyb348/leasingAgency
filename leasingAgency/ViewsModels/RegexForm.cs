@@ -18,5 +18,11 @@ namespace leasingAgency.ViewsModels
         static public bool RegexPasswordFunc(string str){
             return Regex.IsMatch(str, regexPassword, RegexOptions.None);
         }
+
+        static private string regexOnlyNumber = @"^[0-9 ]+$";
+        static public bool RegexOnlyNumberFunc(string str)
+        {
+            return Regex.IsMatch(str, regexOnlyNumber, RegexOptions.None);
+        }
     }
 }

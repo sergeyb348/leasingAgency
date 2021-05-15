@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Icon="resources/icon.png"
         Title="{Binding Path=Title}"
-        Height="450" Width="380">
+        Height="450" Width="380" ResizeMode="CanMinimize">
     <Window.DataContext>
         <vm:LoginWindowVM/>
     </Window.DataContext>
@@ -38,8 +38,8 @@
         <!--///////////////////////////////////////////////////////////////////////////////////////-->
         
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
-        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="Black"/>
-        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="Black"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#200b13"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#200b13"/>
         <Style TargetType="{x:Type PasswordBox}">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Padding" Value="5"/>
@@ -86,9 +86,9 @@
         </Style>
         
         <!--///////////////////////////////////////////////////////////////////////////////////////-->
-        
-        <SolidColorBrush x:Key="TextBox.MouseOver.Border2" Color="Black"/>
-        <SolidColorBrush x:Key="TextBox.Focus.Border2" Color="Black"/>
+
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border2" Color="#200b13"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border2" Color="#200b13"/>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Padding" Value="5"/>
@@ -168,7 +168,7 @@
             </Grid>
             <TextBox Grid.Row="1" 
                      Text="{Binding Path=TextBoxLogin, UpdateSourceTrigger=PropertyChanged}"
-                     TextWrapping="Wrap"/>
+                     TextWrapping="Wrap" BorderThickness="2,2,2,2" Margin="5,0"/>
         </Grid>
 
         <Grid Grid.Row="3">
@@ -183,7 +183,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Введите пароль" Grid.Row="0" />
             </Grid>
-            <PasswordBox  Grid.Row="1" Name ="PwdBox"/>
+            <PasswordBox  Grid.Row="1" Name ="PwdBox" Margin="5,0"/>
         </Grid>
 
         <TextBlock Style="{StaticResource StyleInfo}" Text="Добро пожаловать" Grid.Column="1" Grid.Row="0" />

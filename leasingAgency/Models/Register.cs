@@ -15,11 +15,11 @@ namespace leasingAgency.Models
         {
             try
             {
-                leasingAgency_BDContext context = new leasingAgency_BDContext();
-                var user = new User();
-                user.User_Login = loginUser;
-                user.User_Password = PasswordManager.GetPassword(passwordUser);
-                context.User_Table.Add(user);
+                leasingAgencyBD context = new leasingAgencyBD();
+                var user = new UserTable();
+                user.UserLogin = loginUser;
+                user.UserPassword = PasswordManager.GetHash(passwordUser);
+                context.UserTable.Add(user);
                 context.SaveChanges();
                 return true;
             }

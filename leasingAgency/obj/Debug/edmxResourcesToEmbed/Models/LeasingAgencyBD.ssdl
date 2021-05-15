@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище leasingAgency_BDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AutoTable">
+    <Key>
+      <PropertyRef Name="IdAuto" />
+    </Key>
+    <Property Name="IdAuto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandAuto" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="ModelAuto" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="BodyType" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="Release" Type="int" Nullable="false" />
+    <Property Name="Color" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="DurationPayment" Type="int" Nullable="false" />
+    <Property Name="MonthPayment" Type="int" Nullable="false" />
+    <Property Name="ImgAuto" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeasingApplications">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="PhoneNumber" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="Surname" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="Name" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="MiddleName" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="DataApplications" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LikedAuto">
+    <Key>
+      <PropertyRef Name="IdUser" />
+      <PropertyRef Name="IdAuto" />
+    </Key>
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="IdAuto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserLogin" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="UserPassword" Type="char" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__LeasingAp__IdUse__3F466844">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+    <End Role="LeasingApplications" Type="Self.LeasingApplications" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="LeasingApplications">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LikedAuto__IdAut__3C69FB99">
+    <End Role="AutoTable" Type="Self.AutoTable" Multiplicity="1" />
+    <End Role="LikedAuto" Type="Self.LikedAuto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AutoTable">
+        <PropertyRef Name="IdAuto" />
+      </Principal>
+      <Dependent Role="LikedAuto">
+        <PropertyRef Name="IdAuto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LikedAuto__IdUse__3B75D760">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+    <End Role="LikedAuto" Type="Self.LikedAuto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="LikedAuto">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище leasingAgency_BDModelContainer">
+    <EntitySet Name="AutoTable" EntityType="Self.AutoTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeasingApplications" EntityType="Self.LeasingApplications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LikedAuto" EntityType="Self.LikedAuto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__LeasingAp__IdUse__3F466844" Association="Self.FK__LeasingAp__IdUse__3F466844">
+      <End Role="UserTable" EntitySet="UserTable" />
+      <End Role="LeasingApplications" EntitySet="LeasingApplications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LikedAuto__IdAut__3C69FB99" Association="Self.FK__LikedAuto__IdAut__3C69FB99">
+      <End Role="AutoTable" EntitySet="AutoTable" />
+      <End Role="LikedAuto" EntitySet="LikedAuto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LikedAuto__IdUse__3B75D760" Association="Self.FK__LikedAuto__IdUse__3B75D760">
+      <End Role="UserTable" EntitySet="UserTable" />
+      <End Role="LikedAuto" EntitySet="LikedAuto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

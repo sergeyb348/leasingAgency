@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище leasingAgency_BDModelContainer" CdmEntityContainer="leasingAgencyBD">
+    <EntitySetMapping Name="AutoTable">
+      <EntityTypeMapping TypeName="leasingAgency_BDModel.AutoTable">
+        <MappingFragment StoreEntitySet="AutoTable">
+          <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
+          <ScalarProperty Name="BrandAuto" ColumnName="BrandAuto" />
+          <ScalarProperty Name="ModelAuto" ColumnName="ModelAuto" />
+          <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+          <ScalarProperty Name="Release" ColumnName="Release" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DurationPayment" ColumnName="DurationPayment" />
+          <ScalarProperty Name="MonthPayment" ColumnName="MonthPayment" />
+          <ScalarProperty Name="ImgAuto" ColumnName="ImgAuto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeasingApplications">
+      <EntityTypeMapping TypeName="leasingAgency_BDModel.LeasingApplications">
+        <MappingFragment StoreEntitySet="LeasingApplications">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="DataApplications" ColumnName="DataApplications" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTable">
+      <EntityTypeMapping TypeName="leasingAgency_BDModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LikedAuto" TypeName="leasingAgency_BDModel.LikedAuto" StoreEntitySet="LikedAuto">
+      <EndProperty Name="AutoTable">
+        <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
+      </EndProperty>
+      <EndProperty Name="UserTable">
+        <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

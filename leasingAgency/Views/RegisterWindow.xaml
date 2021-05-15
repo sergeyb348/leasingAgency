@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:leasingAgency.Views"
         mc:Ignorable="d"
         Icon="resources/icon.png"
-        Title="{Binding Title}" Height="500" Width="400">
+        Title="{Binding Title}" Height="500" Width="400" ResizeMode="CanMinimize">
     <Window.DataContext>
         <vm:RegisterWindowVM/>
     </Window.DataContext>
