@@ -12,6 +12,10 @@ namespace leasingAgency.Models
         #region Singleton
         private static MainUser instance;
 
+        public UserTable user;
+
+        private MainUser() { }
+
         public static MainUser getInstance()
         {
             if (instance == null)
@@ -19,33 +23,13 @@ namespace leasingAgency.Models
             return instance;
         }
         #endregion
-
-        #region InfoUser
-        private int idUser { get; set; }
-
-        internal int GetIdUser() 
-        {
-            return idUser;
-        }
-
-        private string loginUser { get; set; }
-
-        internal string GetloginUser() 
-        {
-            return loginUser;
-        }
-
-        #endregion
-
         internal static bool SetMainUser(string login, string password) 
         {
             try
             {
-                leasingAgencyBD context = new leasingAgencyBD();
-                UserTable user = context.UserTable.First(x => x.UserLogin.Trim() == login && x.UserPassword == password);
+                LeasingAgencyContextDB context = new LeasingAgencyContextDB();
                 MainUser mainUser = getInstance();
-                mainUser.idUser = user.IdUser;
-                mainUser.loginUser = user.UserLogin;
+                mainUser.user = context.UserTable.First(x => x.UserLogin.Trim() == login && x.UserPassword == password);
                 return true;
             }
             catch

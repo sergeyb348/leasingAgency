@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:leasingAgency.Views"
         xmlns:vm="clr-namespace:leasingAgency.ViewsModels"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="600" Width="950" ResizeMode="CanMinimize">
+        Icon="/Views/resources/icon.png"
+        Title="" Height="630" Width="950" ResizeMode="CanMinimize" WindowStyle="None">
     <Window.DataContext>
         <vm:WindowUserVM/>
     </Window.DataContext>
@@ -35,30 +36,123 @@
             <Setter Property="Foreground" Value="#200b13"/>
         </Style>
     </Window.Resources>
-    <Grid Margin="0,0,0,-1">
+    <Grid Height="630">
         <Grid.RowDefinitions>
-
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*" />
             <ColumnDefinition Width="99*" />
         </Grid.ColumnDefinitions>
-        <Frame
-            Grid.Row="1" 
-            Grid.Column="1"
-            Content="{Binding CurrentPage}"
-            Opacity="{Binding }"
-        />
-        <Frame Grid.Row="0" Grid.Column="1" Name="FrameWindowUser" NavigationUIVisibility="Hidden" />
-        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Background="#200b13">
+        <Border Name="ToolBar" Grid.ColumnSpan="2" BorderThickness="0"  Background="#200b13" MouseDown="ToolBar_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                    Text="Админ панель"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Foreground="White"
+                    FontSize="20"
+                    Margin="20,0"/>
+                <StackPanel Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top">
+                    <Button Margin="2" Grid.Column="1" Grid.Row="4"
+                        Command="{Binding RollUpWindow}"
+                        BorderThickness="0">
+                        <Image>
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="/Views/resources/RollUpOn.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="/Views/resources/RollUpOn.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Margin="2" Grid.Column="1" Grid.Row="4"
+                        Command="{Binding CloseWindow}"
+                        BorderThickness="0">
+                        <Image>
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="/Views/resources/CrossTOn.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="/Views/resources/CrossT.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Frame Grid.Row="1" Grid.Column="1" Name="FrameWindowUser" NavigationUIVisibility="Hidden" />
+        <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Background="#200b13">
             <Grid.RowDefinitions>
                 <RowDefinition Height="500"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0"  Background="#200b13">
-                <Button Style="{StaticResource StyleButtonMenu}" Content="Мой профиль"  />
-                <Button Style="{StaticResource StyleButtonMenu}" Content="Главное" Command="{Binding OpenPageMain}"/>
+                <Button Style="{StaticResource StyleButtonMenu}" Content="Заявки" Command="{Binding OpenPageApplication}"/>
+                <Button Style="{StaticResource StyleButtonMenu}" Content="Авто" Command="{Binding OpenPageMain}"/>
                 <Button Style="{StaticResource StyleButtonMenu}" Content="Добавить авто" Command="{Binding OpenPageAuto}"/>
+                <Button Style="{StaticResource StyleButtonMenu}" Content="Выход" Command="{Binding Exit}" VerticalAlignment="Top"/>
 
             </StackPanel>
             <TextBlock Grid.Row="1"

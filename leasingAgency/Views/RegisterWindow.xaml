@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:leasingAgency.Views"
         mc:Ignorable="d"
         Icon="resources/icon.png"
-        Title="{Binding Title}" Height="500" Width="400" ResizeMode="CanMinimize">
+        Title="{Binding Title}" Height="530" Width="400" ResizeMode="CanMinimize" WindowStyle="None">
     <Window.DataContext>
         <vm:RegisterWindowVM/>
     </Window.DataContext>
@@ -34,6 +34,7 @@
             <Setter Property="Padding" Value="0"/>
             <Setter Property="FontFamily" Value="Verdana"/>
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="30,0"/>
         </Style>
         
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
@@ -41,7 +42,7 @@
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#200b13"/>
         <Style TargetType="{x:Type PasswordBox}">
             <Setter Property="FontFamily" Value="Verdana"/>
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="25"/>
             <Setter Property="Padding" Value="1"/>
             <Setter Property="Margin" Value="4"/>
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
@@ -54,6 +55,7 @@
             <Setter Property="AllowDrop" Value="true"/>
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Margin" Value="25,0"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type PasswordBox}">
@@ -89,7 +91,7 @@
         <SolidColorBrush x:Key="TextBox.Focus.Border2" Color="#200b13"/>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontFamily" Value="Verdana"/>
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="25"/>
             <Setter Property="Padding" Value="2"/>
             <Setter Property="Margin" Value="4"/>
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
@@ -102,6 +104,7 @@
             <Setter Property="AllowDrop" Value="true"/>
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Margin" Value="25,0"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
@@ -137,12 +140,14 @@
             <Setter Property="TextTrimming" Value="None"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground" Value="red"/>
+            <Setter Property="Margin" Value="30,0"/>
         </Style>
         
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="70"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -150,25 +155,104 @@
             <RowDefinition Height="60" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
-
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Логин" Grid.Row="0" />
-                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorLogin}" Grid.Row="1" />
+        <Border Name="ToolBar" Grid.ColumnSpan="2" BorderThickness="0"  Background="#200b13" MouseDown="ToolBar_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                    Text="Регистрация "
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Foreground="White"
+                    FontSize="20"
+                    Margin="20,0"/>
+                <StackPanel Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top">
+                    <Button Margin="2" Grid.Column="1" Grid.Row="4"
+                        Command="{Binding RollUpWindow}"
+                        BorderThickness="0">
+                        <Image>
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="/Views/resources/RollUpOn.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="/Views/resources/RollUpOn.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Margin="2" Grid.Column="1" Grid.Row="4"
+                        Command="{Binding CloseWindow}"
+                        BorderThickness="0">
+                        <Image>
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="/Views/resources/CrossTOn.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="/Views/resources/CrossT.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
             </Grid>
-
-            <TextBox Text="{Binding Path=TextBoxLogin, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
-
-        </Grid>
-
+            
+        </Border>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -176,15 +260,24 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Пароль" Grid.Column="1" Grid.Row="0" />
-                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorPasswordFirst}" Grid.Row="1" />
+                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Логин" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorLogin}" Grid.Row="1" />
             </Grid>
 
-            <PasswordBox Grid.Row="1" Name="pwdBoxFirst"/>
-            
+            <TextBox Text="{Binding Path=TextBoxLogin, UpdateSourceTrigger=PropertyChanged}" Height="40" Grid.Row="1" VerticalAlignment="Top">
+                <TextBox.ToolTip>
+                    <ToolTip Opacity="0.9" Background="#200b13">
+                        <StackPanel>
+                            <TextBlock Foreground="White" Text="Логин должен состоять из букв(может включать цифры), не менее "/>
+                            <TextBlock Foreground="White" Text=" чем из 3 символов и не более чем из 15 символов." HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+
         </Grid>
 
         <Grid Grid.Row="3">
@@ -194,19 +287,46 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Повтор пароля" Grid.Column="1" Grid.Row="0" />
-                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorPasswordSecond}" Grid.Row="1" />
+                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Пароль" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorPasswordFirst}" Grid.Row="1" />
             </Grid>
-            <PasswordBox Grid.Row="1" Name="pwdBoxSecond"/>
+
+            <PasswordBox Grid.Row="1" Name="pwdBoxFirst" Height="40" VerticalAlignment="Top">
+                <PasswordBox.ToolTip>
+                    <ToolTip Opacity="0.9" Background="#200b13">
+                        <StackPanel>
+                            <TextBlock Foreground="White" Text="Пароль должен состоять из комбинации цифр и букв, и состоять "/>
+                            <TextBlock Foreground="White" Text="не менее чем из 6 символов и не более чем из 20 символов." HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </ToolTip>
+                </PasswordBox.ToolTip>
+            </PasswordBox>
+
         </Grid>
 
-        <TextBlock Style="{StaticResource StyleInfo}" Text="Регистрация" Grid.Column="1" Grid.Row="0" />
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource StyleInfoMenu}" Text="Повтор пароля" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                <TextBlock Style="{DynamicResource TextBlockError}" Text="{Binding Path=TextBlockErrorPasswordSecond}" Grid.Row="1" />
+            </Grid>
+            <PasswordBox Grid.Row="1" Name="pwdBoxSecond" Height="40" VerticalAlignment="Top"/>
+        </Grid>
 
-        <Button Command="{Binding RegisterUser}" Style="{StaticResource StyleButtonMenu}" Grid.Row="5" IsDefault ="True" Content="Зарегистрироваться"/>
-        <Button Command="{Binding OpenLoginWindow}" Style="{StaticResource StyleButtonMenu}" Grid.Row="6" IsDefault ="True" Content="Вернуться к входу"/>
+        <TextBlock Style="{StaticResource StyleInfo}" Text="Зарегистрируйтесь" Grid.Column="1" Grid.Row="1" Margin="0,10,0,0" />
+
+        <Button Command="{Binding RegisterUser}" Style="{StaticResource StyleButtonMenu}" Grid.Row="6" IsDefault ="True" Content="Зарегистрироваться"/>
+        <Button Command="{Binding OpenLoginWindow}" Style="{StaticResource StyleButtonMenu}" Grid.Row="7" IsDefault ="True" Content="Вернуться к входу"/>
     </Grid>
 
 </Window>

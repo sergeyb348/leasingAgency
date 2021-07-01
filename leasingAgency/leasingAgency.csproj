@@ -111,37 +111,44 @@
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
     <Compile Include="Models\Auto.cs" />
     <Compile Include="Models\AutoTable.cs">
-      <DependentUpon>LeasingAgencyBD.tt</DependentUpon>
+      <DependentUpon>LeasingAgencyContextDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ItemsAutoManager.cs" />
-    <Compile Include="Models\LeasingAgencyBD.Context.cs">
+    <Compile Include="Models\ImageManager.cs" />
+    <Compile Include="Models\LeasingAgencyContextDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LeasingAgencyBD.Context.tt</DependentUpon>
+      <DependentUpon>LeasingAgencyContextDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LeasingAgencyBD.cs">
+    <Compile Include="Models\LeasingAgencyContextDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LeasingAgencyBD.tt</DependentUpon>
+      <DependentUpon>LeasingAgencyContextDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LeasingAgencyBD.Designer.cs">
+    <Compile Include="Models\LeasingAgencyContextDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LeasingAgencyBD.edmx</DependentUpon>
+      <DependentUpon>LeasingAgencyContextDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\LeasingApplications.cs">
-      <DependentUpon>LeasingAgencyBD.tt</DependentUpon>
+      <DependentUpon>LeasingAgencyContextDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LeasingApplicationsModel.cs" />
     <Compile Include="Models\MainUser.cs" />
     <Compile Include="Models\PasswordManager.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\UserTable.cs">
-      <DependentUpon>LeasingAgencyBD.tt</DependentUpon>
+      <DependentUpon>LeasingAgencyContextDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewsModels\Base\ViewModel.cs" />
     <Compile Include="ViewsModels\DelegateCommand.cs" />
     <Compile Include="ViewsModels\ItemsAutoVM.cs" />
     <Compile Include="ViewsModels\PageAddAutoVM.cs" />
+    <Compile Include="ViewsModels\PageApplicationsVM.cs" />
+    <Compile Include="ViewsModels\PageEditAutoVM.cs" />
+    <Compile Include="ViewsModels\PageInfoUserVM.cs" />
+    <Compile Include="ViewsModels\PageItemsAutoAdminVM.cs" />
+    <Compile Include="ViewsModels\PageProfileUserVM.cs" />
+    <Compile Include="ViewsModels\PageSubmitApplicationVM.cs" />
     <Compile Include="ViewsModels\Windows\LoginWindowVM.cs" />
     <Compile Include="ViewsModels\RegexForm.cs" />
     <Compile Include="ViewsModels\Windows\RegisterWindowVM.cs" />
@@ -157,8 +164,23 @@
     <Compile Include="Views\MainWindow\PagesUserWindow\PageAddAuto.xaml.cs">
       <DependentUpon>PageAddAuto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainWindow\PagesUserWindow\PageInfo.xaml.cs">
-      <DependentUpon>PageInfo.xaml</DependentUpon>
+    <Compile Include="Views\MainWindow\PagesUserWindow\PageApplications.xaml.cs">
+      <DependentUpon>PageApplications.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow\PagesUserWindow\PageEditAuto.xaml.cs">
+      <DependentUpon>PageEditAuto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow\PagesUserWindow\PageInfoAbautUser.xaml.cs">
+      <DependentUpon>PageInfoAbautUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow\PagesUserWindow\PageItemsAutoAdmin.xaml.cs">
+      <DependentUpon>PageItemsAutoAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow\PagesUserWindow\PageProfileUser.xaml.cs">
+      <DependentUpon>PageProfileUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow\PagesUserWindow\PageSubmitApplication.xaml.cs">
+      <DependentUpon>PageSubmitApplication.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow\WindowAdmin.xaml.cs">
       <DependentUpon>WindowAdmin.xaml</DependentUpon>
@@ -181,7 +203,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainWindow\PagesUserWindow\PageInfo.xaml">
+    <Page Include="Views\MainWindow\PagesUserWindow\PageApplications.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow\PagesUserWindow\PageEditAuto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow\PagesUserWindow\PageInfoAbautUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow\PagesUserWindow\PageItemsAutoAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow\PagesUserWindow\PageProfileUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow\PagesUserWindow\PageSubmitApplication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,12 +258,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\LeasingAgencyBD.edmx">
+    <EntityDeploy Include="Models\LeasingAgencyContextDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LeasingAgencyBD.Designer.cs</LastGenOutput>
+      <LastGenOutput>LeasingAgencyContextDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\LeasingAgencyBD.edmx.diagram">
-      <DependentUpon>LeasingAgencyBD.edmx</DependentUpon>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Models\LeasingAgencyContextDB.edmx.diagram">
+      <DependentUpon>LeasingAgencyContextDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -250,18 +293,34 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\LeasingAgencyBD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LeasingAgencyBD.edmx</DependentUpon>
-      <LastGenOutput>LeasingAgencyBD.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\LeasingAgencyBD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LeasingAgencyBD.edmx</DependentUpon>
-      <LastGenOutput>LeasingAgencyBD.cs</LastGenOutput>
-    </Content>
+    <Resource Include="Views\resources\OnCross.png" />
+    <Resource Include="Views\resources\Cross.png" />
     <Resource Include="Views\resources\Liked.png" />
     <Resource Include="Views\resources\OnLiked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\resources\RollUpOn.png" />
+    <Resource Include="Views\resources\RollUp.png" />
+    <Resource Include="Views\resources\CrossTOn.png" />
+    <Resource Include="Views\resources\CrossT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\LeasingAgencyContextDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LeasingAgencyContextDB.edmx</DependentUpon>
+      <LastGenOutput>LeasingAgencyContextDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\LeasingAgencyContextDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LeasingAgencyContextDB.edmx</DependentUpon>
+      <LastGenOutput>LeasingAgencyContextDB.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Views\resources\DeleteOn.png" />
+    <Resource Include="Views\resources\Delete.png" />
+    <Resource Include="Views\resources\editOn.jpg" />
+    <Resource Include="Views\resources\BackOn.jpg" />
+    <Resource Include="Views\resources\Back.jpg" />
+    <Resource Include="Views\resources\edit.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

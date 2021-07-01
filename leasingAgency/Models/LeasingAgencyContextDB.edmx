@@ -27,9 +27,9 @@
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="PhoneNumber" Type="char" MaxLength="9" Nullable="false" />
           <Property Name="Surname" Type="char" MaxLength="20" Nullable="false" />
-          <Property Name="Name" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="NameUser" Type="char" MaxLength="20" Nullable="false" />
           <Property Name="MiddleName" Type="char" MaxLength="20" Nullable="false" />
-          <Property Name="DataApplications" Type="date" Nullable="false" />
+          <Property Name="DataApplications" Type="char" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="LikedAuto">
           <Key>
@@ -47,19 +47,7 @@
           <Property Name="UserLogin" Type="char" MaxLength="30" Nullable="false" />
           <Property Name="UserPassword" Type="char" MaxLength="32" Nullable="false" />
         </EntityType>
-        <Association Name="FK__LeasingAp__IdUse__3F466844">
-          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
-          <End Role="LeasingApplications" Type="Self.LeasingApplications" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="UserTable">
-              <PropertyRef Name="IdUser" />
-            </Principal>
-            <Dependent Role="LeasingApplications">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__LikedAuto__IdAut__3C69FB99">
+        <Association Name="FK__LikedAuto__IdAut__4E88ABD4">
           <End Role="AutoTable" Type="Self.AutoTable" Multiplicity="1" />
           <End Role="LikedAuto" Type="Self.LikedAuto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -71,7 +59,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LikedAuto__IdUse__3B75D760">
+        <Association Name="FK__LikedAuto__IdUse__4D94879B">
           <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
           <End Role="LikedAuto" Type="Self.LikedAuto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -88,15 +76,11 @@
           <EntitySet Name="LeasingApplications" EntityType="Self.LeasingApplications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LikedAuto" EntityType="Self.LikedAuto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__LeasingAp__IdUse__3F466844" Association="Self.FK__LeasingAp__IdUse__3F466844">
-            <End Role="UserTable" EntitySet="UserTable" />
-            <End Role="LeasingApplications" EntitySet="LeasingApplications" />
-          </AssociationSet>
-          <AssociationSet Name="FK__LikedAuto__IdAut__3C69FB99" Association="Self.FK__LikedAuto__IdAut__3C69FB99">
+          <AssociationSet Name="FK__LikedAuto__IdAut__4E88ABD4" Association="Self.FK__LikedAuto__IdAut__4E88ABD4">
             <End Role="AutoTable" EntitySet="AutoTable" />
             <End Role="LikedAuto" EntitySet="LikedAuto" />
           </AssociationSet>
-          <AssociationSet Name="FK__LikedAuto__IdUse__3B75D760" Association="Self.FK__LikedAuto__IdUse__3B75D760">
+          <AssociationSet Name="FK__LikedAuto__IdUse__4D94879B" Association="Self.FK__LikedAuto__IdUse__4D94879B">
             <End Role="UserTable" EntitySet="UserTable" />
             <End Role="LikedAuto" EntitySet="LikedAuto" />
           </AssociationSet>
@@ -129,10 +113,9 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NameUser" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="DataApplications" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="UserTable" Relationship="Self.FK__LeasingAp__IdUse__3F466844" FromRole="LeasingApplications" ToRole="UserTable" />
+          <Property Name="DataApplications" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTable">
           <Key>
@@ -141,33 +124,16 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserLogin" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="UserPassword" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="LeasingApplications" Relationship="Self.FK__LeasingAp__IdUse__3F466844" FromRole="UserTable" ToRole="LeasingApplications" />
           <NavigationProperty Name="AutoTable" Relationship="Self.LikedAuto" FromRole="UserTable" ToRole="AutoTable" />
         </EntityType>
-        <Association Name="FK__LeasingAp__IdUse__3F466844">
-          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
-          <End Role="LeasingApplications" Type="Self.LeasingApplications" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="UserTable">
-              <PropertyRef Name="IdUser" />
-            </Principal>
-            <Dependent Role="LeasingApplications">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="LikedAuto">
           <End Role="AutoTable" Type="Self.AutoTable" Multiplicity="*" />
           <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="leasingAgencyBD" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="LeasingAgencyContextDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AutoTable" EntityType="Self.AutoTable" />
           <EntitySet Name="LeasingApplications" EntityType="Self.LeasingApplications" />
           <EntitySet Name="UserTable" EntityType="Self.UserTable" />
-          <AssociationSet Name="FK__LeasingAp__IdUse__3F466844" Association="Self.FK__LeasingAp__IdUse__3F466844">
-            <End Role="UserTable" EntitySet="UserTable" />
-            <End Role="LeasingApplications" EntitySet="LeasingApplications" />
-          </AssociationSet>
           <AssociationSet Name="LikedAuto" Association="Self.LikedAuto">
             <End Role="AutoTable" EntitySet="AutoTable" />
             <End Role="UserTable" EntitySet="UserTable" />
@@ -178,7 +144,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище leasingAgency_BDModelContainer" CdmEntityContainer="leasingAgencyBD">
+        <EntityContainerMapping StorageEntityContainer="Хранилище leasingAgency_BDModelContainer" CdmEntityContainer="LeasingAgencyContextDB">
           <EntitySetMapping Name="AutoTable">
             <EntityTypeMapping TypeName="leasingAgency_BDModel.AutoTable">
               <MappingFragment StoreEntitySet="AutoTable">
@@ -201,7 +167,7 @@
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameUser" ColumnName="NameUser" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="DataApplications" ColumnName="DataApplications" />
               </MappingFragment>

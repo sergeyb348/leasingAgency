@@ -152,7 +152,7 @@ namespace leasingAgency.ViewsModels
                 else
                     WindowsManager.CloseLoginWindow();
             }
-            else if (MainUser.SetMainUser(TextBoxLogin, TextBoxPassword))
+            else if (MainUser.SetMainUser(TextBoxLogin, TextBoxPassword) && "admin" != TextBoxLogin)
             {
                 WindowsManager.OpenMainWindowUser();
                 if (WindowsManager.loginWindow == null)
@@ -167,6 +167,28 @@ namespace leasingAgency.ViewsModels
         }
         #endregion
 
+        #region CloseWindow
+        public ICommand CloseWindow { get; }
+
+        private bool CanCloseWindow(object p) => true;
+
+        private void OnCloseWindow(object p)
+        {
+            WindowsManager.CloseLoginWindow();
+        }
+        #endregion
+
+        #region RollUpWindow
+        public ICommand RollUpWindow { get; }
+
+        private bool CanRollUpWindow(object p) => true;
+
+        private void OnRollUpWindow(object p)
+        {
+            WindowsManager.loginWindow.WindowState = System.Windows.WindowState.Minimized;
+        }
+        #endregion
+
         #endregion
 
         public LoginWindowVM()
@@ -176,6 +198,8 @@ namespace leasingAgency.ViewsModels
 
             OpenMainWindowUser = new LambdaCommand(OnOpenMainWindowUser, CanOpenMainWindowUser);
             OpenRegisterWindow = new LambdaCommand(OnOpenRegisterWindow, CanOpenRegisterWindow);
+            CloseWindow = new LambdaCommand(OnCloseWindow, CanCloseWindow);
+            RollUpWindow = new LambdaCommand(OnRollUpWindow, CanRollUpWindow);
 
             #endregion
         }

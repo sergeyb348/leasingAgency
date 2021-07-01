@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="leasingAgency.Models.Auto" Collapsed="true">
+    <Position X="22.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAxAAADCQAAAAAAgCCAAABAIAAgAQAAAIAAgRSgAwA=</HashCode>
+      <FileName>Models\Auto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.Models.ImageManager" Collapsed="true">
+    <Position X="24.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ImageManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.Models.LeasingApplicationsModel" Collapsed="true">
+    <Position X="22.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACCACAAAgDAEEAAQwCQABAAAAAAAAAAAAAAgAEA=</HashCode>
+      <FileName>Models\LeasingApplicationsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.Models.MainUser" Collapsed="true">
+    <Position X="21" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAABAAAQAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\MainUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.Models.PasswordManager" Collapsed="true">
+    <Position X="21" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PasswordManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.Models.Register" Collapsed="true">
+    <Position X="19.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Register.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.LoginWindowVM" Collapsed="true">
+    <Position X="24.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAIAgAUBABAEQAKEIAgAAAgIAAQAAAACAQABkAAIA=</HashCode>
+      <FileName>ViewsModels\Windows\LoginWindowVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.RegisterWindowVM" Collapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAggAEABAAFJAYEIAkAAAAIBAQAAEACAoABgCAIk=</HashCode>
+      <FileName>ViewsModels\Windows\RegisterWindowVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.Windows.WindowAdminVM" Collapsed="true">
+    <Position X="24.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAASAEAAFAIIAIAAAQAAAAAAQAAAAICAAAFgEAAA=</HashCode>
+      <FileName>ViewsModels\Windows\WindowAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.WindowsManager" Collapsed="true">
+    <Position X="24.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAAEQBAAAABAIEAAAAAAAYAAACAAIAAAAAAAAAA=</HashCode>
+      <FileName>ViewsModels\Windows\WindowsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.WindowUserVM" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <InheritanceLine Type="leasingAgency.ViewsModels.Base.ViewModel" ManuallyRouted="true">
+      <Path>
+        <Point X="22.75" Y="4" />
+        <Point X="22.75" Y="3.34" />
+        <Point X="21.75" Y="3.34" />
+        <Point X="21.75" Y="3.191" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAGhAAAYIAIAAAQAAgAAQEAAAAAKAAABgAAAA=</HashCode>
+      <FileName>ViewsModels\Windows\WindowUserVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.DelegateCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewsModels\DelegateCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.ItemsAutoVM" Collapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIICACAAAAAAAIAAAACAAAgAAAAhAAAAQAAABAAACAA=</HashCode>
+      <FileName>ViewsModels\ItemsAutoVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.PageAddAutoVM" Collapsed="true">
+    <Position X="19.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAgADDABJQAZqAAicEIQhQAnGAgYIoABASAlGIABgQ=</HashCode>
+      <FileName>ViewsModels\PageAddAutoVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.PageApplicationsVM" Collapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAECAAAAAAAAQACAAACAAAAAgAAA=</HashCode>
+      <FileName>ViewsModels\PageApplicationsVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.PageEditAutoVM" Collapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <InheritanceLine Type="leasingAgency.ViewsModels.Base.ViewModel" ManuallyRouted="true">
+      <Path>
+        <Point X="22.75" Y="4" />
+        <Point X="22.75" Y="3.433" />
+        <Point X="23.5" Y="3.433" />
+        <Point X="23.5" Y="3.191" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>gQQgADRABIQAJqAAicMIQgSAnCAgYYoABISAlGZABgQ=</HashCode>
+      <FileName>ViewsModels\PageEditAutoVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.PageInfoUserVM" Collapsed="true">
+    <Position X="19.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQICAAIAAAAAAAAAAACAAAgACCAAEQgAQAAAAAAACAA=</HashCode>
+      <FileName>ViewsModels\PageInfoUserVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.PageItemsAutoAdminVM" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAAAAAAAAAACAAAgAAAAAAAAAQAAAAAAACAA=</HashCode>
+      <FileName>ViewsModels\PageItemsAutoAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.PageProfileUserVM" Collapsed="true">
+    <Position X="22.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAAAAAAACAACAAAgAAAAQAAAAYAAAAAgACAE=</HashCode>
+      <FileName>ViewsModels\PageProfileUserVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.PageSubmitApplicationVM" Collapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <InheritanceLine Type="leasingAgency.ViewsModels.Base.ViewModel" ManuallyRouted="true">
+      <Path>
+        <Point X="22.75" Y="4" />
+        <Point X="22.75" Y="3.42" />
+        <Point X="25.25" Y="3.42" />
+        <Point X="25.25" Y="3.191" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAmFCAAhAAAwEAAAEAgBAEABQEBAAAAIgIIIQACCA=</HashCode>
+      <FileName>ViewsModels\PageSubmitApplicationVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.RegexForm" Collapsed="true">
+    <Position X="19.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAQBAQAAAAAGAAEAAEAAAAAAAAAAAAAAAQAIA=</HashCode>
+      <FileName>ViewsModels\RegexForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="leasingAgency.ViewsModels.Base.ViewModel" Collapsed="true">
+    <Position X="22" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewsModels\Base\ViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="leasingAgency.Infrastructure.Commands.Base.Command" Collapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Commands\Base\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="leasingAgency.Infrastructure.Commands.LambdaCommand" Collapsed="true">
+    <Position X="24" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQCAAAAAAQAAEAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Commands\LambdaCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

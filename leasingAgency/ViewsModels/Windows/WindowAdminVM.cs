@@ -15,30 +15,6 @@ namespace leasingAgency.ViewsModels.Windows
     class WindowAdminVM : ViewModel
     {
 
-
-        #region Заголовок окна
-
-        private string _Title = "Основное";
-
-        /// <summary> Заголовок окна </summary>
-
-        public string Title
-        {
-            get => _Title;
-
-            set => Set(ref _Title, value);
-
-            //set
-            //{
-            //    //if (Equals(_Title, value)) return;
-            //    //_Title = value;
-            //    //OnPropertyChanged();
-
-            //    Set(ref _Title, value);
-            //}
-        }
-        #endregion
-
         #region UserLogin
 
         private string _UserLogin;
@@ -64,7 +40,7 @@ namespace leasingAgency.ViewsModels.Windows
 
         private void OnOpenPageMain(object p)
         {
-            WindowsManager.windowAdmin.FrameWindowUser.Navigate(new ItemsAuto());
+            WindowsManager.windowAdmin.FrameWindowUser.Navigate(new PageItemsAutoAdmin());
         }
         #endregion
 
@@ -79,6 +55,52 @@ namespace leasingAgency.ViewsModels.Windows
         }
         #endregion
 
+        #region CloseWindow
+        public ICommand CloseWindow { get; }
+
+        private bool CanCloseWindow(object p) => true;
+
+        private void OnCloseWindow(object p)
+        {
+            WindowsManager.ClosenWindowAdmin();
+        }
+        #endregion
+
+        #region RollUpWindow
+        public ICommand RollUpWindow { get; }
+
+        private bool CanRollUpWindow(object p) => true;
+
+        private void OnRollUpWindow(object p)
+        {
+            WindowsManager.windowAdmin.WindowState = System.Windows.WindowState.Minimized;
+        }
+        #endregion
+
+        #region OpenPageApplication
+        public ICommand OpenPageApplication { get; }
+
+        private bool CanOpenPageApplication(object p) => true;
+
+        private void OnOpenPageApplication(object p)
+        {
+            WindowsManager.windowAdmin.FrameWindowUser.Navigate(new PageApplications());
+        }
+        #endregion
+
+        #region Exit
+        public ICommand Exit { get; }
+
+        private bool CanExit(object p) => true;
+
+        private void OnExit(object p)
+        {
+            WindowsManager.OpenLoginWindow();
+            WindowsManager.ClosenWindowAdmin();
+        }
+
+        #endregion
+
         #endregion
 
 
@@ -86,10 +108,12 @@ namespace leasingAgency.ViewsModels.Windows
         {
 
             #region Команды
-
+            OpenPageApplication = new LambdaCommand(OnOpenPageApplication, CanOpenPageApplication);
             OpenPageMain = new LambdaCommand(OnOpenPageMain, CanOpenPageMain);
             OpenPageAuto = new LambdaCommand(OnOpenPageAuto, CanOpenPageAuto);
-
+            CloseWindow = new LambdaCommand(OnCloseWindow, CanCloseWindow);
+            RollUpWindow = new LambdaCommand(OnRollUpWindow, CanRollUpWindow);
+            Exit = new LambdaCommand(OnExit, CanExit);
             #endregion
         }
     }

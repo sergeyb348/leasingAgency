@@ -20,31 +20,6 @@ namespace leasingAgency.ViewsModels
 {
     internal class WindowUserVM : ViewModel
     {
-
-
-        #region Заголовок окна
-
-        private string _Title = "Основное";
-
-        /// <summary> Заголовок окна </summary>
-
-        public string Title
-        {
-            get => _Title;
-
-            set => Set(ref _Title, value);
-
-            //set
-            //{
-            //    //if (Equals(_Title, value)) return;
-            //    //_Title = value;
-            //    //OnPropertyChanged();
-
-            //    Set(ref _Title, value);
-            //}
-        }
-        #endregion
-
         #region UserLogin
 
         private string _UserLogin;
@@ -79,6 +54,17 @@ namespace leasingAgency.ViewsModels
 
         #region Команды
 
+        #region SubmitApplication
+        public ICommand SubmitApplication { get; }
+
+        private bool CanSubmitApplication(object p) => true;
+
+        private void OnSubmitApplication(object p)
+        {
+            WindowsManager.windowUser.FrameWindowUser.Navigate(new PageSubmitApplication());
+        }
+        #endregion
+
         #region OpenPageMain
         public ICommand OpenPageMain { get; }
 
@@ -91,13 +77,35 @@ namespace leasingAgency.ViewsModels
         #endregion
 
         #region OpenPageInfo
-        public ICommand OpenPageInfo { get; }
+        public ICommand OpenPageProfileUser { get; }
 
-        private bool CanOpenPageInfo(object p) => true;
+        private bool CanOpenPageProfileUser(object p) => true;
 
-        private void OnOpenPageInfo(object p)
+        private void OnOpenPageProfileUser(object p)
         {
-            WindowsManager.windowUser.FrameWindowUser.Navigate(new PageInfo());
+            WindowsManager.windowUser.FrameWindowUser.Navigate(new PageProfileUser());
+        }
+        #endregion
+
+        #region CloseWindow
+        public ICommand CloseWindow { get; }
+
+        private bool CanCloseWindow(object p) => true;
+
+        private void OnCloseWindow(object p)
+        {
+            WindowsManager.CloseWindowUser();
+        }
+        #endregion
+
+        #region RollUpWindow
+        public ICommand RollUpWindow { get; }
+
+        private bool CanRollUpWindow(object p) => true;
+
+        private void OnRollUpWindow(object p)
+        {
+            WindowsManager.windowUser.WindowState = System.Windows.WindowState.Minimized;
         }
         #endregion
 
@@ -106,15 +114,31 @@ namespace leasingAgency.ViewsModels
 
         public WindowUserVM() 
         {
+            try 
+            {
+                UserLogin = MainUser.getInstance().user.UserLogin;
+                #region Команды
 
-            UserLogin = MainUser.getInstance().GetloginUser();
 
-            #region Команды
+                SubmitApplication = new LambdaCommand(OnSubmitApplication, CanSubmitApplication);
+                OpenPageMain = new LambdaCommand(OnOpenPageMain, CanOpenPageMain);
+                OpenPageProfileUser = new LambdaCommand(OnOpenPageProfileUser, CanOpenPageProfileUser);
+                CloseWindow = new LambdaCommand(OnCloseWindow, CanCloseWindow);
+                RollUpWindow = new LambdaCommand(OnRollUpWindow, CanRollUpWindow);
 
-            OpenPageMain = new LambdaCommand(OnOpenPageMain, CanOpenPageMain);
-            OpenPageInfo = new LambdaCommand(OnOpenPageInfo, CanOpenPageInfo);
+                #endregion
+            }
+            catch 
+            {
+                #region Команды
 
-            #endregion
+                OpenPageMain = new LambdaCommand(OnOpenPageMain, CanOpenPageMain);
+                OpenPageProfileUser = new LambdaCommand(OnOpenPageProfileUser, CanOpenPageProfileUser);
+                CloseWindow = new LambdaCommand(OnCloseWindow, CanCloseWindow);
+                RollUpWindow = new LambdaCommand(OnRollUpWindow, CanRollUpWindow);
+
+                #endregion
+            }
         }
 }
 }

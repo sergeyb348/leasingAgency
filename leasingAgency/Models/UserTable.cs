@@ -24,7 +24,6 @@ namespace leasingAgency.Models
         public string UserLogin { get; set; }
         public string UserPassword { get; set; }
     
-        public virtual LeasingApplications LeasingApplications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AutoTable> AutoTable { get; set; }
     }

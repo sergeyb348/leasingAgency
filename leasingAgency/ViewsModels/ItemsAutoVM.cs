@@ -12,34 +12,19 @@ namespace leasingAgency.ViewsModels
 {
     internal class ItemsAutoVM : ViewModel
     {
-        internal static string ItemsInfoPriceMonth(int strMonth, int strPrice) 
-        {
-            try 
-            {
-                int x = strPrice / strMonth;
-                if (Convert.ToDouble(strMonth) / 12.0 != 1 && strMonth % 12 != 0)
-                {
-                    return "В месяц " + x + " BYN на " + strMonth / 12 + "г." + strMonth % 12 + "м.";
-                }
-                else if (Convert.ToDouble(strMonth) / 12.0 != 1 && strMonth % 12 == 0)
-                {
-                    return "В месяц " + x + " BYN на " + strMonth % 12 + "м.";
-                }
-                else if (Convert.ToDouble(strMonth) / 12.0 == 1 && strMonth % 12 == 0)
-                {
-                    return "В месяц " + x + " BYN на " + strMonth / 12 + "г.";
-                }
-                else 
-                {
-                    return "";
-                }
-            }
-            catch 
-            {
-                return "";
-            }
+        #region ListAuto
 
+        private List<Auto> _ListAuto;
+
+        /// <summary> ListAuto </summary>
+
+        public List<Auto> ListAuto
+        {
+            get => _ListAuto;
+
+            set => Set(ref _ListAuto, value);
         }
+        #endregion
 
         #region TextBoxSearch
 
@@ -51,22 +36,67 @@ namespace leasingAgency.ViewsModels
         {
             get => _TextBoxSearch;
 
-            set => Set(ref _TextBoxSearch, value);
+            set
+            {
+                ListAuto = Auto.Search(value, AllItemsAuto, _TextBoxFromPrice, TextBoxBeforPrice);
+                Set(ref _TextBoxSearch, value);
+            }
         }
         #endregion
 
+        #region TextBoxFromPrice
 
-        #region itemsAuto
+        private string _TextBoxFromPrice;
 
-        private List<AutoTable> _itemsAuto;
+        /// <summary> _TextBoxFromPrice </summary>
 
-        /// <summary> itemsAuto </summary>
-
-        public List<AutoTable> itemsAuto
+        public string TextBoxFromPrice
         {
-            get => _itemsAuto;
+            get => _TextBoxFromPrice;
 
-            set => Set(ref _itemsAuto, value);
+            set
+            {
+                if (RegexForm.RegexOnlyNumberFunc(value) || value == "")
+                {
+                    ListAuto = Auto.Search(TextBoxSearch, AllItemsAuto, value, TextBoxBeforPrice);
+                    Set(ref _TextBoxFromPrice, value);
+                }
+            }    
+        }
+        #endregion
+
+        #region TextBoxBeforPrice
+
+        private string _TextBoxBeforPrice;
+
+        /// <summary> _TextBoxFromPrice </summary>
+
+        public string TextBoxBeforPrice
+        {
+            get => _TextBoxBeforPrice;
+
+            set
+            {
+                if (RegexForm.RegexOnlyNumberFunc(value) || value == "")
+                {
+                    ListAuto = Auto.Search(TextBoxSearch, AllItemsAuto, TextBoxFromPrice, value);
+                    Set(ref _TextBoxBeforPrice, value);
+                }
+            }
+        }
+        #endregion
+
+        #region AllItemsAuto
+
+        private List<Auto> _AllItemsAuto;
+
+        /// <summary> AllItemsAuto </summary>
+
+        public List<Auto> AllItemsAuto
+        {
+            get => _AllItemsAuto;
+
+            set => Set(ref _AllItemsAuto, value);
         }
         #endregion
 
@@ -87,6 +117,13 @@ namespace leasingAgency.ViewsModels
 
         internal ItemsAutoVM() 
         {
+            AllItemsAuto = Auto.GetListAuto();
+            ListAuto = AllItemsAuto;
+
+            _TextBoxBeforPrice = "";
+            _TextBoxFromPrice = "";
+            _TextBoxSearch = "";
+
             #region Команды
             AddLikedItems = new LambdaCommand(OnAddLikedItems, CanAddLikedItems);
             #endregion

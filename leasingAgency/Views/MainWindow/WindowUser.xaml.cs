@@ -26,5 +26,11 @@ namespace leasingAgency.Views.MainWindow
             InitializeComponent();
             DataContext = new WindowUserVM();
         }
+
+        private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }

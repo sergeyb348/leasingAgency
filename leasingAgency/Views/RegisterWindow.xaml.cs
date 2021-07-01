@@ -35,5 +35,11 @@ namespace leasingAgency.Views
             registerWindowVM.TextBoxPasswordFirst = pwdBoxFirst.Password;
             registerWindowVM.TextBoxPasswordSecond = pwdBoxSecond.Password;
         }
+
+        private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }

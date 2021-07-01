@@ -33,6 +33,8 @@ namespace leasingAgency.ViewsModels
 
         #region AutoImage
 
+        internal bool flagAutoImage = false;
+
         private BitmapImage _AutoImage;
 
         /// <summary> AutoImage </summary>
@@ -43,7 +45,9 @@ namespace leasingAgency.ViewsModels
 
             set
             {
+                flagAutoImage = value != null;
                 Set(ref _AutoImage, value);
+
             }
         }
         #endregion
@@ -62,7 +66,7 @@ namespace leasingAgency.ViewsModels
 
             set
             {
-                if (value.Count() <= 20) 
+                if (value.Count() <= 20)
                 {
                     CreateTextBlockBrandAutoModelAuto(value, TextBoxModelAuto);
                     flagBrandAuto = checkEmpt(value);
@@ -92,7 +96,7 @@ namespace leasingAgency.ViewsModels
                     flagModelAuto = checkEmpt(value);
                     Set(ref _TextBoxModelAuto, value);
                 }
-            }    
+            }
         }
         #endregion
 
@@ -110,15 +114,43 @@ namespace leasingAgency.ViewsModels
 
             set
             {
-                if (value.Count() <= 20) 
+                if (value.Count() <= 20 && regexCheckBodyType(value) || value == "")
                 {
                     flagBodyType = checkEmpt(value);
                     Set(ref _TextBoxBodyType, value);
                 }
-                    
+
             }
 
         }
+
+        private string _TextBoxBodyTypeError;
+
+        /// <summary> TextBoxReleaseError </summary>
+
+        public string TextBoxBodyTypeError
+        {
+            get => _TextBoxBodyTypeError;
+
+            set => Set(ref _TextBoxBodyTypeError, value);
+        }
+
+
+        private bool regexCheckBodyType(string str)
+        {
+            if (!RegexForm.RegexNameFunc(str))
+            {
+                TextBoxBodyTypeError = "Tолько символы";
+                return false;
+            }
+            else
+            {
+                TextBoxBodyTypeError = "";
+                flagBodyType = true;
+                return true;
+            }
+        }
+
         #endregion
 
         #region TextBoxRelease
@@ -135,9 +167,10 @@ namespace leasingAgency.ViewsModels
 
             set
             {
-                if (value.Count() <= 4)
+
+                if ((value.Count() <= 4 && regexCheckRelease(value)) || value == "")
                 {
-                    regexCheckRelease(value);
+                    flagRelease = checkEmpt(value);
                     Set(ref _TextBoxRelease, value);
                 }
             }
@@ -155,17 +188,18 @@ namespace leasingAgency.ViewsModels
             set => Set(ref _TextBoxReleaseError, value);
         }
 
-        private void regexCheckRelease(string str)
+        private bool regexCheckRelease(string str)
         {
             if (!RegexForm.RegexOnlyNumberFunc(str))
             {
                 TextBoxReleaseError = "только числа";
-                flagRelease = false;
+                return false;
             }
             else
             {
                 TextBoxReleaseError = "";
                 flagRelease = true;
+                return true;
             }
         }
         #endregion
@@ -184,14 +218,42 @@ namespace leasingAgency.ViewsModels
 
             set
             {
-                if (value.Count() <= 20) 
+                if (value.Count() <= 20 && regexCheckColor(value) || value == "")
                 {
                     flagColor = checkEmpt(value);
                     Set(ref _TextBoxColor, value);
-                }  
+                }
             }
 
         }
+
+        private string _TextBoxColorError;
+
+        /// <summary> TextBoxReleaseError </summary>
+
+        public string TextBoxColorError
+        {
+            get => _TextBoxColorError;
+
+            set => Set(ref _TextBoxColorError, value);
+        }
+
+
+        private bool regexCheckColor(string str)
+        {
+            if (!RegexForm.RegexNameFunc(str))
+            {
+                TextBoxColorError = "Tолько символы";
+                return false;
+            }
+            else
+            {
+                TextBoxColorError = "";
+                flagColor = true;
+                return true;
+            }
+        }
+
         #endregion
 
         #region TextBoxPrice
@@ -208,13 +270,13 @@ namespace leasingAgency.ViewsModels
 
             set
             {
-                if (value.Count() <= 7)
+                if (value.Count() <= 7 && regexCheckPrice(value) || value == "")
                 {
-                    regexCheckPrice(value);
-                    TextBlockInfoPriceMonth = ItemsAutoVM.ItemsInfoPriceMonth(Convert.ToInt32(TextBoxMonth), Convert.ToInt32(value));
+                    flagPrice = checkEmpt(value);
+                    TextBlockInfoPriceMonth = Auto.ItemsInfoPriceMonth(Convert.ToInt32(TextBoxMonth), Convert.ToInt32(value));
                     Set(ref _TextBoxPrice, value);
                     TextBoxPriceOut = value + " BYN";
-                }    
+                }
             }
 
         }
@@ -241,17 +303,23 @@ namespace leasingAgency.ViewsModels
             set => Set(ref _TextBoxPriceOut, value);
         }
 
-        private void regexCheckPrice(string str)
+        private bool regexCheckPrice(string str)
         {
-            if (!RegexForm.RegexOnlyNumberFunc(str) && Convert.ToInt32(str) != 0)
+            if (!RegexForm.RegexOnlyNumberFunc(str))
             {
                 TextBoxPriceError = "только числа";
-                flagPrice = false;
+                return false;
+            }
+            else if (Convert.ToInt32(str) == 0)
+            {
+                TextBoxPriceError = "только натуральные числа";
+                return false;
             }
             else
             {
                 TextBoxPriceError = "";
                 flagPrice = true;
+                return true;
             }
 
         }
@@ -262,6 +330,8 @@ namespace leasingAgency.ViewsModels
 
         private string _TextBoxMonthPayment;
 
+        private bool flagMonthPayment = false;
+
         /// <summary> TextBoxMonthPayment </summary>
 
         public string TextBoxMonthPayment
@@ -270,8 +340,9 @@ namespace leasingAgency.ViewsModels
 
             set
             {
-                if (value.Count() <= 3) 
+                if (value.Count() <= 3)
                 {
+                    flagMonthPayment = checkEmpt(value);
                     Set(ref _TextBoxMonthPayment, value);
                 }
             }
@@ -304,26 +375,32 @@ namespace leasingAgency.ViewsModels
 
             set
             {
-                if (value.Count() <= 3)
+                if (value.Count() <= 3 && regexCheckMonth(value) || value == "")
                 {
-                    regexCheckMonth(value);
-                    TextBlockInfoPriceMonth = ItemsAutoVM.ItemsInfoPriceMonth(Convert.ToInt32(value), Convert.ToInt32(TextBoxPrice));
+                    flagMonth = checkEmpt(value);
+                    TextBlockInfoPriceMonth = Auto.ItemsInfoPriceMonth(Convert.ToInt32(value), Convert.ToInt32(TextBoxPrice));
                     Set(ref _TextBoxMonth, value);
                 }
             }
         }
 
-        private void regexCheckMonth(string str)
+        private bool regexCheckMonth(string str)
         {
-            if (!RegexForm.RegexOnlyNumberFunc(str) && Convert.ToInt32(str) != 0)
+            if (!RegexForm.RegexOnlyNumberFunc(str))
             {
                 TextBoxMonthPaymentError = "только числа";
-                flagMonth = false;
+                return false;
+            }
+            else if (Convert.ToInt32(str) == 0)
+            {
+                TextBoxMonthPaymentError = "только числа";
+                return false;
             }
             else
             {
                 TextBoxMonthPaymentError = "";
                 flagMonth = true;
+                return true;
             }
         }
 
@@ -373,8 +450,8 @@ namespace leasingAgency.ViewsModels
         private bool CanAddAuto(object p) => flagBrandAuto && flagModelAuto && flagBodyType && flagRelease && flagColor && flagPrice && flagMonth && AutoImage != null;
 
         private void OnAddAuto(object p)
-        {
-            if (ItemsAutoManager.AddAuto(TextBoxBrandAuto, TextBoxModelAuto, TextBoxBodyType, TextBoxRelease, TextBoxColor, TextBoxPrice, TextBoxMonth, base64Image))
+        { 
+            if (Auto.AddAuto(TextBoxBrandAuto, TextBoxModelAuto, TextBoxBodyType, TextBoxRelease, TextBoxColor, TextBoxPrice, TextBoxMonth, base64Image))
             {
                 clearTextBox();
             }
@@ -413,14 +490,7 @@ namespace leasingAgency.ViewsModels
                 var fileName = op.FileName;
                 base64Image = Convert.ToBase64String(File.ReadAllBytes(fileName));
 
-                byte[] binaryData = Convert.FromBase64String(base64Image);
-
-                BitmapImage bi = new BitmapImage();
-                bi.BeginInit();
-                bi.StreamSource = new MemoryStream(binaryData);
-                bi.EndInit();
-
-                AutoImage = bi;
+                AutoImage = ImageManager.ConvertBase64ToImage(base64Image);
             }
             #endregion
 

@@ -13,10 +13,10 @@ namespace leasingAgency.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class leasingAgencyBD : DbContext
+    public partial class LeasingAgencyContextDB : DbContext
     {
-        public leasingAgencyBD()
-            : base("name=leasingAgencyBD")
+        public LeasingAgencyContextDB()
+            : base("name=LeasingAgencyContextDB")
         {
         }
     

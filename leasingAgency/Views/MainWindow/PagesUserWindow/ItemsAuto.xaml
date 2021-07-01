@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:leasingAgency.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="572" d:DesignWidth="754"
-      Title="ItemsAuto">
+      Title="ItemsAuto"
+      d:DesignHeight="600" d:DesignWidth="754">
     <Page.Resources>
         <Style  TargetType="Button" >
             <Setter Property="FontFamily" Value="Verdana" />
@@ -16,18 +16,17 @@
             <Setter Property="Padding" Value="20"/>
             <Setter Property="BorderBrush" Value="#200b13"/>
         </Style>
-        
+
         <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-        
+
         <Style  TargetType="TextBlock" x:Key="StyleItemsСollection">
             <Setter Property="FontFamily" Value="Verdana" />
             <Setter Property="Foreground" Value="#200b13" />
-            <Setter Property="Height" Value="60"/>
-            <Setter Property="Padding" Value="20"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
 
         <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-        
+
         <SolidColorBrush x:Key="TextBox.MouseOver.Border2" Color="#200b13"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border2" Color="#200b13"/>
         <Style TargetType="{x:Type TextBox}">
@@ -74,14 +73,15 @@
                     <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
                 </MultiTrigger>
             </Style.Triggers>
-            
+
             <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-        
+
         </Style>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="35"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#200b13">
@@ -90,7 +90,7 @@
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
             <TextBox Grid.Row="1" 
-                     Text="{Binding Path=TextBoxSearch, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding Path=TextBoxSearch, UpdateSourceTrigger=PropertyChanged}" Margin="12,12,12,6"/>
             <TextBlock Grid.Column="1"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
@@ -98,36 +98,116 @@
                        FontSize="30"
                        Foreground="White"/>
         </Grid>
-        <ListBox ItemsSource="{Binding itemsAuto}" Grid.Row="1" Background="White">
+        <Border Grid.Row="1" Background="#200b13">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="83"/>
+                    <ColumnDefinition Width="106"/>
+                    <ColumnDefinition Width="72"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="72"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="Цена от " FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="27" Margin="10,2,0,6" Width="78" Grid.ColumnSpan="2"/>
+                <TextBox Padding="1,0" FontSize="15" Grid.Column="2" Margin="5" Text="{Binding Path=TextBoxFromPrice, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Column="3" Text="BYN До" FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="27" Margin="0,2,0,6" Width="78" Grid.ColumnSpan="2"/>
+                <TextBox Padding="0" FontSize="15" Grid.Column="4" Margin="5" Text="{Binding Path=TextBoxBeforPrice, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Column="5" Text="BYN" FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="27" Margin="0,2,0,6" Width="78" Grid.ColumnSpan="2"/>
+            </Grid>
+        </Border>
+        <ListBox ItemsSource="{Binding ListAuto}" Grid.Row="3" Background="White">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="#200b13" Margin="5" BorderThickness="2" CornerRadius="3" Background="#DCDCDC">
+                    <Border Width="720" Height="200" Grid.Row="4" BorderBrush="#200b13"  BorderThickness="2" CornerRadius="3" Background="#DCDCDC">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="400"/>
                                 <ColumnDefinition Width="300"/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Border BorderBrush="#200b13" BorderThickness="1" Margin="5">
-                                <Image Width="400" Height="300" RenderOptions.BitmapScalingMode="Fant" Source="{Binding ImgAuto}" Grid.Column="0"/>
-                            </Border>
+                            <Image Grid.RowSpan="2" RenderOptions.BitmapScalingMode="Fant" Source="{Binding ImgAuto}" Grid.Column="0" Margin="10,0,20,0"/>
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
-                                    <RowDefinition/>
+                                    <RowDefinition Height="48"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding BrandAuto}" Grid.Row="0" />
-                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding ModelAuto}" Grid.Row="1" />
-                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding BodyType}" Grid.Row="2" />
-                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding ReleaseAuto}" Grid.Row="3" />
-                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding Color}" Grid.Row="4" />
-                                <Button  Content="Добавить в лист ожидания" Margin="0 0 5 5" Grid.Row="4" />
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding ModelAutoBrandAuto}" Grid.Row="0" Grid.ColumnSpan="2" />
+                                <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="77"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding BodyType}" Grid.Column="1" />
+                                    <TextBlock Style="{StaticResource StyleItemsСollection}" Text="Кузов: " />
+                                </Grid>
+                                <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="149"/>
+                                        <ColumnDefinition Width="23*"/>
+                                        <ColumnDefinition Width="23*"/>
+                                        <ColumnDefinition Width="51*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding Release}" Grid.Column="1" />
+                                    <TextBlock Style="{StaticResource StyleItemsСollection}" Text="Год выпуска: " />
+                                    <TextBlock Style="{StaticResource StyleItemsСollection}" Text="Цена: " Grid.Column="2"/>
+                                    <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding Price}" Grid.Column="3"/>
+                                </Grid>
+                                <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding InfoPriceMonth}" Grid.Row="4"/>
+                                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="65"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{StaticResource StyleItemsСollection}" Text="{Binding Color}" Grid.Column="1" />
+                                    <TextBlock Style="{StaticResource StyleItemsСollection}" Text="Цвет: " />
+                                </Grid>
+                                <Button Margin="0 0 5 5" Grid.Column="1" Grid.Row="4"
+                                        Command="{Binding AddLikedAuto}"
+                                        CommandParameter="{Binding IdAuto}">
+                                    <Image>
+                                        <Image.Style>
+                                            <Style TargetType="{x:Type Image}">
+                                                <Setter Property="Source" Value="/Views/resources/OnLiked.png"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Source" Value="/Views/resources/Liked.png"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter Property="RenderTransform">
+                                                        <Setter.Value>
+                                                            <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                             </Grid>
                         </Grid>
                     </Border>
@@ -135,5 +215,5 @@
             </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
-    
+
 </Page>

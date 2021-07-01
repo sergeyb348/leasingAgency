@@ -1,0 +1,214 @@
+﻿<Page x:Class="leasingAgency.Views.MainWindow.PagesUserWindow.PageSubmitApplication"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:leasingAgency.Views.MainWindow.PagesUserWindow"
+      mc:Ignorable="d" 
+      Title="PageSubmitApplication"
+      d:DesignHeight="600" d:DesignWidth="754">
+    <Page.Resources>
+        <Style  TargetType="Button" >
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Background" Value="#200b13" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderBrush" Value="#200b13"/>
+        </Style>
+
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        <Style  TargetType="TextBlock" x:Key="StyleItemsСollection">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="Foreground" Value="#200b13" />
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border2" Color="#200b13"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border2" Color="#200b13"/>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="#200b13"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Margin" Value="12"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#200b13"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#200b13"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+
+            <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Background="#200b13" Grid.Row="0">
+            <TextBlock
+                Text="Фамилия" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="55,0,0,0"
+                Foreground="White"
+                FontSize="30"
+                FontFamily="Verdana"/>
+        </Border>
+        <Border Background="#200b13" Grid.Row="1">
+            <TextBlock Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Text="{Binding TextBlockErrorSurname}"
+                       FontFamily="Verdana" 
+                       FontSize="17"
+                       Foreground="#FFFFBFBF"
+                       Margin="60,0,0,0"/>
+        </Border>
+        <Border Background="#200b13" Grid.Row="2">
+            <TextBox
+                Text="{Binding Path=TextBoxSurname, UpdateSourceTrigger=PropertyChanged}"
+                Margin="55,5,150,20"/>
+        </Border>
+        
+        <Border Background="#200b13" Grid.Row="3">
+            <TextBlock
+                Text="Имя" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="55,0,0,0"
+                Foreground="White"
+                FontSize="30"
+                FontFamily="Verdana"/>
+        </Border>
+        <Border Background="#200b13" Grid.Row="4">
+            <TextBlock Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Text="{Binding TextBlockErrorName}"
+                       FontFamily="Verdana" 
+                       FontSize="17"
+                       Foreground="#FFFFBFBF"
+                       Margin="60,0,0,0"/>
+        </Border>
+        <Border Background="#200b13" Grid.Row="5">
+            <TextBox
+                Text="{Binding Path=TextBoxName, UpdateSourceTrigger=PropertyChanged}"
+                Margin="55,5,150,20"/>
+        </Border>
+
+        <Border Background="#200b13" Grid.Row="6">
+            <TextBlock
+                Text="Отчество" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="55,0,0,0"
+                Foreground="White"
+                FontSize="30"
+                FontFamily="Verdana"/>
+        </Border>
+        <Border Background="#200b13" Grid.Row="7">
+            <TextBlock Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Text="{Binding TextBlockErrorMiddleName}"
+                       FontFamily="Verdana" 
+                       FontSize="17"
+                       Foreground="#FFFFBFBF"
+                       Margin="60,0,0,0"/>
+        </Border>
+        <Border Background="#200b13" Grid.Row="8">
+            <TextBox
+                Text="{Binding Path=TextBoxMiddleName, UpdateSourceTrigger=PropertyChanged}"
+                Margin="55,5,150,20"/>
+        </Border>
+
+        <Border Background="#200b13" Grid.Row="9">
+            <TextBlock
+                Text="Ваш нормер телефона" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="55,0,0,0"
+                Foreground="White"
+                FontSize="30"
+                FontFamily="Verdana"/>
+        </Border>
+        <Border Background="#200b13" Grid.Row="10">
+            <TextBlock Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Text="{Binding TextBlockErrorPhoneNumber}"
+                       FontFamily="Verdana" 
+                       FontSize="17"
+                       Foreground="#FFFFBFBF"
+                       Margin="60,0,0,0"/>
+        </Border>
+        <Border Background="#200b13" Grid.Row="11">
+            <TextBox
+                Text="{Binding Path=TextBoxPhoneNumber, UpdateSourceTrigger=PropertyChanged}"
+                Margin="55,5,150,20"/>
+        </Border>
+        
+        <Border Background="#200b13" Grid.Row="12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Command="{Binding SubmitApplication}" Content="Отправить заявку"/>
+                <Button Grid.Column="1" Command="{Binding ClearTextBox}" Content="Очистить поля"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
+

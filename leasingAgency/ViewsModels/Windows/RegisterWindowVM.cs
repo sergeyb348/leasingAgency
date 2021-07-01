@@ -206,6 +206,28 @@ namespace leasingAgency.ViewsModels
         }
         #endregion
 
+        #region CloseWindow
+        public ICommand CloseWindow { get; }
+
+        private bool CanCloseWindow(object p) => true;
+
+        private void OnCloseWindow(object p)
+        {
+            WindowsManager.CloseRegisterWindow();
+        }
+        #endregion
+
+        #region RollUpWindow
+        public ICommand RollUpWindow { get; }
+
+        private bool CanRollUpWindow(object p) => true;
+
+        private void OnRollUpWindow(object p)
+        {
+            WindowsManager.registerWindow.WindowState = System.Windows.WindowState.Minimized;
+        }
+        #endregion
+
         #endregion
 
         public RegisterWindowVM() 
@@ -214,6 +236,8 @@ namespace leasingAgency.ViewsModels
 
             OpenLoginWindow = new LambdaCommand(OnOpenLoginWindow, CanOpenLoginWindow);
             RegisterUser = new LambdaCommand(OnRegisterUser, CanRegisterUser);
+            CloseWindow = new LambdaCommand(OnCloseWindow, CanCloseWindow);
+            RollUpWindow = new LambdaCommand(OnRollUpWindow, CanRollUpWindow);
 
             #endregion
         }

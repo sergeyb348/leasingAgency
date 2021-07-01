@@ -5,18 +5,21 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:leasingAgency.Views.MainWindow.PagesUserWindow"
       mc:Ignorable="d"
-      d:DesignHeight="572" d:DesignWidth="754"
-      Title="AddAuto">
+      Title="AddAuto"
+      d:DesignHeight="600" d:DesignWidth="754"
+      >
     <Page.Resources>
 
         <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-        <Style  TargetType="Button">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="Verdana" />
-            <Setter Property="Background" Value="#200b13" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderBrush" Value="#200b13"/>
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontFamily" Value="Verdana" />
+                <Setter Property="Background" Value="#200b13" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderBrush" Value="#200b13"/>
+            </Style.Setters>
         </Style>
 
         <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
@@ -87,7 +90,7 @@
             <RowDefinition Height="75"/>
             <RowDefinition Height="75"/>
             <RowDefinition Height="204"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="96" />
 
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -103,13 +106,14 @@
             <TextBox Grid.Row="1" 
                      Text="{Binding Path=TextBoxBrandAuto, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Grid.Column="0"
-                       Margin="20,0,0,0"
+                       Margin="19.3,0,0,0"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Bottom"
                        Text="Марка"
                        FontFamily="Verdana" 
                        FontSize="20"
                        Foreground="White"/>
+            
 
             <TextBox Grid.Row="1" Grid.Column="1" 
                      Text="{Binding Path=TextBoxModelAuto, UpdateSourceTrigger=PropertyChanged}"/>
@@ -122,6 +126,7 @@
                        FontFamily="Verdana" 
                        FontSize="20"
                        Foreground="White"/>
+            
         </Grid>
         <Grid Grid.Row="1" Background="#200b13">
             <Grid.RowDefinitions>
@@ -141,6 +146,13 @@
                        FontFamily="Verdana" 
                        FontSize="20"
                        Foreground="White" Margin="20,0,0,0"/>
+            <TextBlock Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       Text="{Binding TextBoxBodyTypeError}"
+                       FontFamily="Verdana" 
+                       FontSize="15"
+                       Foreground="#FFFFBFBF" Margin="20,0,25,0"/>
 
             <TextBox Grid.Row="1" Grid.Column="1" MaxLines="4" 
                      Text="{Binding Path=TextBoxRelease, UpdateSourceTrigger=PropertyChanged}"/>
@@ -157,7 +169,7 @@
                        Text="{Binding TextBoxReleaseError}"
                        FontFamily="Verdana" 
                        FontSize="15"
-                       Foreground="#FFFFBFBF" Margin="20,0,0,0"/>
+                       Foreground="#FFFFBFBF" Margin="20,0,25,0"/>
         </Grid>
         <Grid Grid.Row="2" Background="#200b13">
             <Grid.RowDefinitions>
@@ -177,6 +189,13 @@
                        FontFamily="Verdana" 
                        FontSize="20"
                        Foreground="White" Margin="20,0,0,0"/>
+            <TextBlock Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       Text="{Binding TextBoxColorError}"
+                       FontFamily="Verdana" 
+                       FontSize="15"
+                       Foreground="#FFFFBFBF" Margin="20,0,25,0"/>
             <TextBox Grid.Row="1"  Grid.Column="1" 
                      Text="{Binding Path=TextBoxPrice, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Grid.Column="1" 
@@ -192,7 +211,7 @@
                        Text="{Binding TextBoxPriceError}"
                        FontFamily="Verdana" 
                        FontSize="15"
-                       Foreground="#FFFFBFBF" Margin="20,0,0,0"/>
+                       Foreground="#FFFFBFBF" Margin="20,0,25,0"/>
         </Grid>
         <Grid Grid.Row="3" Background="#200b13">
             <Grid.RowDefinitions>
@@ -218,7 +237,7 @@
                        Text="{Binding TextBoxMonthPaymentError}"
                        FontFamily="Verdana" 
                        FontSize="15"
-                       Foreground="#FFFFBFBF" Margin="20,0,0,0"/>
+                       Foreground="#FFFFBFBF" Margin="20,0,25,0"/>
             <Button Grid.RowSpan="2" Grid.Column="1" Content="Изображение" Command="{Binding ImagePikcerDialogCommand}"/>
 
         </Grid>

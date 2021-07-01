@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="leasingAgency_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AutoTable">
+    <Key>
+      <PropertyRef Name="IdAuto" />
+    </Key>
+    <Property Name="IdAuto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandAuto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ModelAuto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="BodyType" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Release" Type="Int32" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="DurationPayment" Type="Int32" Nullable="false" />
+    <Property Name="MonthPayment" Type="Int32" Nullable="false" />
+    <Property Name="ImgAuto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UserTable" Relationship="Self.LikedAuto" FromRole="AutoTable" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="LeasingApplications">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NameUser" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DataApplications" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserLogin" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AutoTable" Relationship="Self.LikedAuto" FromRole="UserTable" ToRole="AutoTable" />
+  </EntityType>
+  <Association Name="LikedAuto">
+    <End Role="AutoTable" Type="Self.AutoTable" Multiplicity="*" />
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="LeasingAgencyContextDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AutoTable" EntityType="Self.AutoTable" />
+    <EntitySet Name="LeasingApplications" EntityType="Self.LeasingApplications" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" />
+    <AssociationSet Name="LikedAuto" Association="Self.LikedAuto">
+      <End Role="AutoTable" EntitySet="AutoTable" />
+      <End Role="UserTable" EntitySet="UserTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

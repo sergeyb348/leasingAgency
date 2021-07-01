@@ -36,5 +36,11 @@ namespace leasingAgency.Views
         {
             loginWindowVM.TextBoxPassword = PasswordManager.GetHash(PwdBox.Password);
         }
+
+        private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }

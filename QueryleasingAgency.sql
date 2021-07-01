@@ -55,3 +55,8 @@ CREATE TABLE LeasingApplications
 select * from UserTable;
 
 select * from AutoTable;
+
+select * from LikedAuto
+
+select * from LeasingApplications
+

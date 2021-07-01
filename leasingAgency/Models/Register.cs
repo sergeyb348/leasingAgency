@@ -15,7 +15,7 @@ namespace leasingAgency.Models
         {
             try
             {
-                leasingAgencyBD context = new leasingAgencyBD();
+                LeasingAgencyContextDB context = new LeasingAgencyContextDB();
                 var user = new UserTable();
                 user.UserLogin = loginUser;
                 user.UserPassword = PasswordManager.GetHash(passwordUser);

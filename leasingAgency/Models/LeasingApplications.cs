@@ -17,10 +17,8 @@ namespace leasingAgency.Models
         public int IdUser { get; set; }
         public string PhoneNumber { get; set; }
         public string Surname { get; set; }
-        public string Name { get; set; }
+        public string NameUser { get; set; }
         public string MiddleName { get; set; }
-        public System.DateTime DataApplications { get; set; }
-    
-        public virtual UserTable UserTable { get; set; }
+        public string DataApplications { get; set; }
     }
 }
